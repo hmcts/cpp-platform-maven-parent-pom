@@ -6,17 +6,13 @@
     <parent>
         <groupId>uk.gov.justice</groupId>
         <artifactId>maven-super-pom</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>parent-pom</artifactId>
     <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
-
-    <name>CPP Parent POM</name>
-    <description>Parent POM for all projects</description>
 
     <scm>
         <connection>${cpp.scm.connection}</connection>
@@ -65,18 +61,21 @@
 
         <plugins.maven.clean.version>3.0.0</plugins.maven.clean.version>
         <plugins.maven.compiler.version>3.5.1</plugins.maven.compiler.version>
-        <plugins.maven.deploy.version>2.8.2</plugins.maven.deploy.version>
         <plugins.maven.dependency.version>2.10</plugins.maven.dependency.version>
         <plugins.maven.ear.version>2.10.1</plugins.maven.ear.version>
         <plugins.maven.ejb.version>2.5.1</plugins.maven.ejb.version>
         <plugins.maven.install.version>2.5.2</plugins.maven.install.version>
+        <plugins.maven.deploy.version>2.8.2</plugins.maven.deploy.version>
         <plugins.maven.jar.version>2.6</plugins.maven.jar.version>
         <plugins.maven.assembly.version>2.6</plugins.maven.assembly.version>
         <plugins.maven.jxr.version>2.5</plugins.maven.jxr.version>
         <plugins.maven.pmd.version>3.6</plugins.maven.pmd.version>
         <plugins.maven.project.info.reports.version>2.9</plugins.maven.project.info.reports.version>
         <plugins.maven.resources.version>2.7</plugins.maven.resources.version>
+        <plugins.maven.remote.resources.version>1.5</plugins.maven.remote.resources.version>
+
         <plugins.maven.site.version>3.5</plugins.maven.site.version>
+
 
         <plugins.maven.wagon.version>2.10</plugins.maven.wagon.version>
         <plugins.maven.war.version>2.6</plugins.maven.war.version>
@@ -102,7 +101,6 @@
         <plugins.jaxb2.version>0.13.1</plugins.jaxb2.version>
         <plugins.jaxws.version>2.4.1</plugins.jaxws.version>
 
-        <plugins.maven.remote.resources.version>1.5</plugins.maven.remote.resources.version>
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
     </properties>
 
@@ -503,6 +501,26 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-remote-resources-plugin</artifactId>
                     <version>${plugins.maven.remote.resources.version}</version>
+                    <executions>
+                        <execution>
+                            <id>wildfly-configs</id>
+                            <goals>
+                                <goal>process</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <skip>${plugins.maven.remote.resources.skip}</skip>
+                        <attachToMain>false</attachToMain>
+                        <attachToTest>false</attachToTest>
+                        <outputDirectory>
+                            ${project.build.directory}/wildfly-shared-archive-resources
+                        </outputDirectory>
+                        <resourceBundles>
+                            <resourceBundle>uk.gov.moj.cpp.common:cpp-common-resources:1.7.24
+                            </resourceBundle>
+                        </resourceBundles>
+                    </configuration>
                 </plugin>
 
                 <!-- Only used when _not_ running a CI build -->
@@ -567,6 +585,24 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>jaxws-maven-plugin</artifactId>
                     <version>${plugins.jaxws.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>1.0-m5.1</version>
+                    <configuration>
+                        <flowInitContext>
+                            <masterBranchName>dev/release</masterBranchName>
+                            <developBranchName>master</developBranchName>
+                            <featureBranchPrefix>dev/feature-</featureBranchPrefix>
+                            <releaseBranchPrefix>dev/release-</releaseBranchPrefix>
+                            <hotfixBranchPrefix>dev/hotfix-</hotfixBranchPrefix>
+                            <versionTagPrefix>release-</versionTagPrefix>
+                        </flowInitContext>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <enableSshAgent>true</enableSshAgent>
+                        <pushReleases>true</pushReleases>
+                    </configuration>
                 </plugin>
             </plugins>
 
