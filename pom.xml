@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -86,6 +88,7 @@
         <plugins.buildhelper.version>1.10</plugins.buildhelper.version>
         <plugins.groovy.maven.version>2.0</plugins.groovy.maven.version>
         <plugins.maven.javadoc.version>2.10.4</plugins.maven.javadoc.version>
+        <plugins.source.version>3.0.1</plugins.source.version>
 
         <!-- testing -->
         <plugins.maven.surefire.version>2.19.1</plugins.maven.surefire.version>
@@ -202,8 +205,8 @@
                         <compilerArguments>
                             <Xmaxerrs>${compiler.max.errors}</Xmaxerrs>
                             <Xmaxwarns>${compiler.max.warnings}</Xmaxwarns>
-                            <Xlint />
-                            <parameters />
+                            <Xlint/>
+                            <parameters/>
                         </compilerArguments>
                     </configuration>
                 </plugin>
@@ -774,6 +777,11 @@
                     <pushReleases>true</pushReleases>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${plugins.source.version}</version>
+            </plugin>
         </plugins>
 
     </build>
@@ -826,7 +834,7 @@
                 <version>${plugins.maven.javadoc.version}</version>
                 <!-- Configuration options - http://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html -->
                 <configuration>
-                    <detectLinks />
+                    <detectLinks/>
                     <links>
                         <link>${javadoc.java.link}</link>
                         <link>${javadoc.javamail.link}</link>
@@ -1099,7 +1107,7 @@
                                     <goal>jar</goal>
                                 </goals>
                                 <configuration>
-                                    <detectLinks />
+                                    <detectLinks/>
                                     <links>
                                         <link>${javadoc.java.link}</link>
                                         <link>${javadoc.javamail.link}</link>
@@ -1144,7 +1152,7 @@
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
