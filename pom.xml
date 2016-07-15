@@ -104,6 +104,22 @@
         <plugins.jaxws.version>2.4.1</plugins.jaxws.version>
 
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
+
+
+        <artifactory.dist.url>https://libraries.dev2.cloud.local/artifactory</artifactory.dist.url>
+        <cpp.dist.releaseRepoUrl>${artifactory.dist.url}/libs-release-local/
+        </cpp.dist.releaseRepoUrl>
+        <cpp.dist.snapshotRepoUrl>${artifactory.dist.url}/libs-snapshot-local/
+        </cpp.dist.snapshotRepoUrl>
+
+        <gerrit.scm.url>ssh://coderepo.dev2.cloud.local:29418</gerrit.scm.url>
+        <cpp.scm.connection>scm:git:${gerrit.scm.url}/cpp.platform.maven.parent-pom
+        </cpp.scm.connection>
+        <cpp.scm.developerConnection>${cpp.scm.connection}</cpp.scm.developerConnection>
+        <gerrit.web.url>https://coderepo.dev2.cloud.local/</gerrit.web.url>
+        <cpp.scm.url>${gerrit.web.url}/cpp.platform.maven.parent-pom</cpp.scm.url>
+
+
     </properties>
 
     <!--
@@ -1294,4 +1310,16 @@
         </profile>
 
     </profiles>
+    <distributionManagement>
+        <repository>
+            <id>HASS</id>
+            <name>libraries.dev2.cloud.local-releases</name>
+            <url>${cpp.dist.releaseRepoUrl}</url>
+        </repository>
+        <snapshotRepository>
+            <id>HASS</id>
+            <name>libraries.dev2.cloud.local-snapshot</name>
+            <url>${cpp.dist.snapshotRepoUrl}</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
