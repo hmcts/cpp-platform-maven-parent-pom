@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -11,6 +13,9 @@
     <artifactId>parent-pom</artifactId>
     <version>2.0.6-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <name>CPP Parent POM</name>
+    <description>Parent POM for all projects</description>
 
     <scm>
         <connection>${cpp.scm.connection}</connection>
@@ -102,7 +107,6 @@
         <plugins.jaxws.version>2.4.1</plugins.jaxws.version>
 
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
-
 
         <artifactory.dist.url>https://libraries.dev2.cloud.local/artifactory</artifactory.dist.url>
         <cpp.dist.releaseRepoUrl>${artifactory.dist.url}/libs-release-local/
@@ -219,102 +223,9 @@
                         <compilerArguments>
                             <Xmaxerrs>${compiler.max.errors}</Xmaxerrs>
                             <Xmaxwarns>${compiler.max.warnings}</Xmaxwarns>
-                            <Xlint />
-                            <parameters />
+                            <Xlint/>
+                            <parameters/>
                         </compilerArguments>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-ear-plugin</artifactId>
-                    <version>${plugins.maven.ear.version}</version>
-                    <configuration>
-                        <generateApplicationXml>true</generateApplicationXml>
-                        <version>${java.ee.version}</version>
-                        <archive>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                                <addDefaultImplementationEntries>true
-                                </addDefaultImplementationEntries>
-                                <addDefaultSpecificationEntries>true
-                                </addDefaultSpecificationEntries>
-                            </manifest>
-                            <manifestEntries>
-                                <Build-Date>${ci.buildTimestamp}</Build-Date>
-                            </manifestEntries>
-                            <manifestSections>
-                                <manifestSection>
-                                    <name>SCM</name>
-                                    <manifestEntries>
-                                        <Scm-Type>Git</Scm-Type>
-                                        <Scm-Revision>${git.revision}</Scm-Revision>
-                                        <Scm-Branch>${git.branch}</Scm-Branch>
-                                        <Scm-Url>${git.url}</Scm-Url>
-                                    </manifestEntries>
-                                </manifestSection>
-                                <manifestSection>
-                                    <name>CI</name>
-                                    <manifestEntries>
-                                        <CI-Type>${ci.type}</CI-Type>
-                                        <CI-Build>${ci.build}</CI-Build>
-                                        <CI-BuildNode>${ci.buildNode}</CI-BuildNode>
-                                        <CI-BuildTimestamp>${ci.buildTimestamp}</CI-BuildTimestamp>
-                                        <CI-BuildUrl>${ci.buildUrl}</CI-BuildUrl>
-                                        <CI-BuildTag>${ci.buildTag}</CI-BuildTag>
-                                        <CI-BuiltBy>${ci.builtBy}</CI-BuiltBy>
-                                        <CI-Job>${ci.job}</CI-Job>
-                                        <CI-JobUrl>${ci.jobUrl}</CI-JobUrl>
-                                        <CI-MavenVersion>${maven.version}</CI-MavenVersion>
-                                    </manifestEntries>
-                                </manifestSection>
-                            </manifestSections>
-                        </archive>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-ejb-plugin</artifactId>
-                    <version>${plugins.maven.ejb.version}</version>
-                    <configuration>
-                        <ejbVersion>${ejb.version}</ejbVersion>
-                        <archive>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                                <addDefaultImplementationEntries>true
-                                </addDefaultImplementationEntries>
-                                <addDefaultSpecificationEntries>true
-                                </addDefaultSpecificationEntries>
-                            </manifest>
-                            <manifestEntries>
-                                <Build-Date>${ci.buildTimestamp}</Build-Date>
-                            </manifestEntries>
-                            <manifestSections>
-                                <manifestSection>
-                                    <name>SCM</name>
-                                    <manifestEntries>
-                                        <Scm-Type>Git</Scm-Type>
-                                        <Scm-Revision>${git.revision}</Scm-Revision>
-                                        <Scm-Branch>${git.branch}</Scm-Branch>
-                                        <Scm-Url>${git.url}</Scm-Url>
-                                    </manifestEntries>
-                                </manifestSection>
-                                <manifestSection>
-                                    <name>CI</name>
-                                    <manifestEntries>
-                                        <CI-Type>${ci.type}</CI-Type>
-                                        <CI-Build>${ci.build}</CI-Build>
-                                        <CI-BuildNode>${ci.buildNode}</CI-BuildNode>
-                                        <CI-BuildTimestamp>${ci.buildTimestamp}</CI-BuildTimestamp>
-                                        <CI-BuildUrl>${ci.buildUrl}</CI-BuildUrl>
-                                        <CI-BuildTag>${ci.buildTag}</CI-BuildTag>
-                                        <CI-BuiltBy>${ci.builtBy}</CI-BuiltBy>
-                                        <CI-Job>${ci.job}</CI-Job>
-                                        <CI-JobUrl>${ci.jobUrl}</CI-JobUrl>
-                                        <CI-MavenVersion>${maven.version}</CI-MavenVersion>
-                                    </manifestEntries>
-                                </manifestSection>
-                            </manifestSections>
-                        </archive>
                     </configuration>
                 </plugin>
 
@@ -420,6 +331,18 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${plugins.maven.war.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-remote-resources-plugin</artifactId>
+                    <version>${plugins.maven.remote.resources.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${plugins.maven.site.version}</version>
                     <!-- <configuration>
@@ -440,104 +363,6 @@
                     </dependencies>
                 </plugin>
 
-                <!-- Make sure the generated web.xml is added to the WAR and not the default one -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>${plugins.maven.war.version}</version>
-                    <configuration>
-                        <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
-                        <!-- Java EE 7 doesn't require web.xml, Maven needs to catch up! -->
-                        <failOnMissingWebXml>false</failOnMissingWebXml>
-                        <webResources>
-                            <resource>
-                                <directory>
-                                    ${project.build.directory}/wildfly-shared-archive-resources
-                                </directory>
-                                <targetPath>WEB-INF</targetPath>
-                                <filtering>true</filtering>
-                                <includes>
-                                    <include>jboss-web.xml</include>
-                                    <include>ejb-jar.xml</include>
-                                </includes>
-                            </resource>
-                            <resource>
-                                <directory>
-                                    ${project.build.directory}/wildfly-shared-archive-resources
-                                </directory>
-                                <targetPath>WEB-INF</targetPath>
-                                <filtering>false</filtering>
-                                <includes>
-                                    <include>jboss-deployment-structure.xml</include>
-                                </includes>
-                            </resource>
-                        </webResources>
-                        <archive>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                                <addDefaultImplementationEntries>true
-                                </addDefaultImplementationEntries>
-                                <addDefaultSpecificationEntries>true
-                                </addDefaultSpecificationEntries>
-                            </manifest>
-                            <manifestEntries>
-                                <Build-Date>${ci.buildTimestamp}</Build-Date>
-                            </manifestEntries>
-                            <manifestSections>
-                                <manifestSection>
-                                    <name>SCM</name>
-                                    <manifestEntries>
-                                        <Scm-Type>Git</Scm-Type>
-                                        <Scm-Revision>${git.revision}</Scm-Revision>
-                                        <Scm-Branch>${git.branch}</Scm-Branch>
-                                        <Scm-Url>${git.url}</Scm-Url>
-                                    </manifestEntries>
-                                </manifestSection>
-                                <manifestSection>
-                                    <name>CI</name>
-                                    <manifestEntries>
-                                        <CI-Type>${ci.type}</CI-Type>
-                                        <CI-Build>${ci.build}</CI-Build>
-                                        <CI-BuildNode>${ci.buildNode}</CI-BuildNode>
-                                        <CI-BuildTimestamp>${ci.buildTimestamp}</CI-BuildTimestamp>
-                                        <CI-BuildUrl>${ci.buildUrl}</CI-BuildUrl>
-                                        <CI-BuildTag>${ci.buildTag}</CI-BuildTag>
-                                        <CI-BuiltBy>${ci.builtBy}</CI-BuiltBy>
-                                        <CI-Job>${ci.job}</CI-Job>
-                                        <CI-JobUrl>${ci.jobUrl}</CI-JobUrl>
-                                        <CI-MavenVersion>${maven.version}</CI-MavenVersion>
-                                    </manifestEntries>
-                                </manifestSection>
-                            </manifestSections>
-                        </archive>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-remote-resources-plugin</artifactId>
-                    <version>${plugins.maven.remote.resources.version}</version>
-                    <executions>
-                        <execution>
-                            <id>wildfly-configs</id>
-                            <goals>
-                                <goal>process</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <skip>${plugins.maven.remote.resources.skip}</skip>
-                        <attachToMain>false</attachToMain>
-                        <attachToTest>false</attachToTest>
-                        <outputDirectory>
-                            ${project.build.directory}/wildfly-shared-archive-resources
-                        </outputDirectory>
-                        <resourceBundles>
-                            <resourceBundle>uk.gov.moj.cpp.common:cpp-common-resources:1.7.24
-                            </resourceBundle>
-                        </resourceBundles>
-                    </configuration>
-                </plugin>
 
                 <!-- Only used when _not_ running a CI build -->
                 <plugin>
@@ -776,7 +601,6 @@
             <plugin>
                 <groupId>external.atlassian.jgitflow</groupId>
                 <artifactId>jgitflow-maven-plugin</artifactId>
-                <version>1.0-m5.1</version>
                 <configuration>
                     <flowInitContext>
                         <masterBranchName>dev/release</masterBranchName>
@@ -848,7 +672,7 @@
                 <version>${plugins.maven.javadoc.version}</version>
                 <!-- Configuration options - http://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html -->
                 <configuration>
-                    <detectLinks />
+                    <detectLinks/>
                     <links>
                         <link>${javadoc.java.link}</link>
                         <link>${javadoc.javamail.link}</link>
@@ -1121,7 +945,7 @@
                                     <goal>jar</goal>
                                 </goals>
                                 <configuration>
-                                    <detectLinks />
+                                    <detectLinks/>
                                     <links>
                                         <link>${javadoc.java.link}</link>
                                         <link>${javadoc.javamail.link}</link>
@@ -1166,7 +990,7 @@
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
-                                                <ignore />
+                                                <ignore/>
                                             </action>
                                         </pluginExecution>
                                         <pluginExecution>
