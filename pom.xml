@@ -9,7 +9,7 @@
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>2.0.6</version>
+    <version>2.0.7</version>
     <packaging>pom</packaging>
 
     <name>CPP Parent POM</name>
@@ -118,6 +118,7 @@
         <cpp.scm.developerConnection>${cpp.scm.connection}</cpp.scm.developerConnection>
         <gerrit.web.url>https://coderepo.dev2.cloud.local/</gerrit.web.url>
         <cpp.scm.url>${gerrit.web.url}/cpp.platform.maven.parent-pom</cpp.scm.url>
+        <liquibase.core.version>3.4.2</liquibase.core.version>
 
 
     </properties>
