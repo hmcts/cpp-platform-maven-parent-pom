@@ -118,6 +118,7 @@
         <cpp.scm.developerConnection>${cpp.scm.connection}</cpp.scm.developerConnection>
         <gerrit.web.url>https://coderepo.dev2.cloud.local/</gerrit.web.url>
         <cpp.scm.url>${gerrit.web.url}/cpp.platform.maven.parent-pom</cpp.scm.url>
+        <liquibase.core.version>3.4.2</liquibase.core.version>
 
 
     </properties>
