@@ -104,6 +104,7 @@
         <plugins.jaxb2.version>0.13.1</plugins.jaxb2.version>
         <plugins.jaxws.version>2.4.1</plugins.jaxws.version>
 
+        <plugins.jgitflow.version>1.0-m5.1</plugins.jgitflow.version>
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
 
         <artifactory.dist.url>https://libraries.dev2.cloud.local/artifactory</artifactory.dist.url>
@@ -429,7 +430,7 @@
                 <plugin>
                     <groupId>external.atlassian.jgitflow</groupId>
                     <artifactId>jgitflow-maven-plugin</artifactId>
-                    <version>1.0-m5.1</version>
+                    <version>${plugins.jgitflow.version}</version>
                     <configuration>
                         <flowInitContext>
                             <masterBranchName>dev/release</masterBranchName>
