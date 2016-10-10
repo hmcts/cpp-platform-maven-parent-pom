@@ -73,6 +73,7 @@
         <plugins.maven.pmd.version>3.6</plugins.maven.pmd.version>
         <plugins.maven.project.info.reports.version>2.9</plugins.maven.project.info.reports.version>
         <plugins.maven.resources.version>3.0.1</plugins.maven.resources.version>
+        <plugins.maven.release.version>2.5.3</plugins.maven.release.version>
         <plugins.maven.remote.resources.version>1.5</plugins.maven.remote.resources.version>
         <plugins.maven.scm.version>1.9.5</plugins.maven.scm.version>
 
@@ -153,8 +154,6 @@
         <!-- Default plugin versions and management -->
         <pluginManagement>
             <plugins>
-
-
                 <!-- WildFly plugin to deploy war -->
                 <plugin>
                     <groupId>org.wildfly.plugins</groupId>
@@ -330,6 +329,12 @@
                 </plugin>
 
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release</artifactId>
+                    <version>${plugins.maven.release.version}</version>
+                </plugin>
+
+		<plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-remote-resources-plugin</artifactId>
                     <version>${plugins.maven.remote.resources.version}</version>
