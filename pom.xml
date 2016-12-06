@@ -9,7 +9,7 @@
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>2.0.11</version>
+    <version>2.0.12</version>
     <packaging>pom</packaging>
 
     <name>CPP Parent POM</name>
@@ -59,6 +59,7 @@
         <plugins.findbugs.version>3.0.3</plugins.findbugs.version>
         <plugins.maven.checkstyle.version>2.17</plugins.maven.checkstyle.version>
         <plugins.maven.enforcer.version>1.4.1</plugins.maven.enforcer.version>
+        <plugins.require-latest-versions-enforcer-rule.version>1.1.0</plugins.require-latest-versions-enforcer-rule.version>
 
         <plugins.maven.clean.version>3.0.0</plugins.maven.clean.version>
         <plugins.maven.compiler.version>3.5.1</plugins.maven.compiler.version>
@@ -500,10 +501,20 @@
                                 <requirePluginVersions>
                                     <message>Please define plugin versions</message>
                                 </requirePluginVersions>
+                                <RequireLatestVersionsRule implementation="uk.gov.justice.maven.rules.RequireLatestVersionsRule">
+                                    <filter>^raml/json/schema/?|.*raml$</filter>
+                                </RequireLatestVersionsRule>
                             </rules>
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>uk.gov.justice.maven</groupId>
+                        <artifactId>require-latest-versions-enforcer-rule</artifactId>
+                        <version>${plugins.require-latest-versions-enforcer-rule.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>
