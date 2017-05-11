@@ -455,6 +455,11 @@
                         <pushReleases>true</pushReleases>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${plugins.source.version}</version>
+                </plugin>
             </plugins>
 
         </pluginManagement>
@@ -597,7 +602,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>${plugins.source.version}</version>
             </plugin>
         </plugins>
 
