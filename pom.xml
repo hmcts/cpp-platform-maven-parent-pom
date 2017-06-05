@@ -120,6 +120,12 @@
         <gerrit.web.url>https://coderepo.dev2.cloud.local/</gerrit.web.url>
         <cpp.scm.url>${gerrit.web.url}/${cpp.scm.project}</cpp.scm.url>
         <liquibase.core.version>3.5.2</liquibase.core.version>
+
+        <!-- CI hooks -->
+        <ci.hook.fixup-versions.skip>true</ci.hook.fixup-versions.skip>
+
+        <!-- Updated by CI hooks -->
+        <cpp.parent-pom.version>2.0.19-SNAPSHOT</cpp.parent-pom.version>
     </properties>
 
     <!--
@@ -488,7 +494,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <!-- Exclude test and provided dependencies. First comment here explains why done this way: http://jira.codehaus.org/browse/MDEP-128 -->
+                            <!-- Exclude test and provided dependencies. First comment here explains why done this way: https://issues.apache.org/jira/browse/MDEP-128 -->
                             <includeScope>runtime</includeScope>
                             <excludeScope>provided</excludeScope>
                         </configuration>
@@ -904,6 +910,19 @@
             </properties>
         </profile>
 
+        <!-- CI Hook profiles. These enable a specific hook for a project, based upon the presence of the hook -->
+        <profile>
+            <id>ci-hook-fixup-versions</id>
+            <activation>
+                <file>
+                    <exists>.ci-hooks/fixup-versions</exists>
+                </file>
+            </activation>
+            <properties>
+                <ci.hook.fixup-versions.skip>false</ci.hook.fixup-versions.skip>
+            </properties>
+        </profile>
+
         <!-- Release profile - builds JAR of source code and Javadocs. Usage: mvn -Prelease -->
         <profile>
             <id>release</id>
@@ -950,9 +969,45 @@
                         </executions>
                     </plugin>
 
+                    <!-- Project Specific Hooks (enabled by profile automatically) -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>fixup-property-versions</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>.ci-hooks/fixup-versions</executable>
+                                    <arguments>
+                                        <argument>ci</argument>
+                                    </arguments>
+                                    <skip>${ci.hook.fixup-versions.skip}</skip>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- Build with Maven Release plugin -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <configuration>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <completionGoals>-N exec:exec@fixup-property-versions</completionGoals>
+                            <goals>deploy</goals>
+                            <localCheckout>true</localCheckout>
+                            <preparationGoals>exec:exec@fixup-property-versions clean verify</preparationGoals>
+                            <releaseProfiles>release</releaseProfiles>
+                            <tagNameFormat>v@{project.version}</tagNameFormat>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>only-eclipse</id>
             <activation>
