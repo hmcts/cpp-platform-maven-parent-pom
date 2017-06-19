@@ -85,7 +85,7 @@
         <plugins.maven.wagon.version>2.12</plugins.maven.wagon.version>
         <plugins.maven.war.version>3.1.0</plugins.maven.war.version>
         <plugins.taglist.version>2.4</plugins.taglist.version>
-        <plugins.versions.version>2.3</plugins.versions.version>
+        <plugins.versions.version>2.4</plugins.versions.version>
         <plugins.maven.liquibase.version>3.5.3</plugins.maven.liquibase.version>
         <plugins.maven.shade.version>3.0.0</plugins.maven.shade.version>
 
@@ -105,7 +105,7 @@
 
         <plugins.jacoco.version>0.7.9</plugins.jacoco.version>
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
-        <plugins.jaxb2.version>0.13.1</plugins.jaxb2.version>
+        <plugins.jaxb2.version>0.13.2</plugins.jaxb2.version>
         <plugins.jaxws.version>2.4.1</plugins.jaxws.version>
 
         <plugins.jgitflow.version>1.0-m5.1</plugins.jgitflow.version>
