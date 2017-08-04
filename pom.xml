@@ -100,8 +100,7 @@
         <plugins.maven.surefire.version>2.20</plugins.maven.surefire.version>
         <plugins.maven.failsafe.version>${plugins.maven.surefire.version}</plugins.maven.failsafe.version>
 
-        <plugins.maven.wildfly.version>1.0.2.Final</plugins.maven.wildfly.version>
-        <plugins.maven.wildfly.skip>true</plugins.maven.wildfly.skip>
+        <plugins.maven.wildfly.version>1.2.0.Alpha6</plugins.maven.wildfly.version>
 
         <plugins.jacoco.version>0.7.9</plugins.jacoco.version>
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
@@ -545,17 +544,6 @@
 
             <plugin>
                 <artifactId>maven-remote-resources-plugin</artifactId>
-            </plugin>
-
-            <!-- The WildFly plugin deploys your war to a local WildFly container -->
-            <!-- Skip modules by default. To enable a module configure the plugin for that specific module -->
-            <!-- To use, run: mvn package wildfly:deploy -->
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <configuration>
-                    <skip>${plugins.maven.wildfly.skip}</skip>
-                </configuration>
             </plugin>
 
             <plugin>
