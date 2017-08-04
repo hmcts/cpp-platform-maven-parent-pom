@@ -20,8 +20,8 @@
         <connection>${cpp.scm.connection}</connection>
         <developerConnection>${cpp.scm.developerConnection}</developerConnection>
         <url>${cpp.scm.url}</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <!--
     ==========
@@ -106,8 +106,18 @@
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
         <plugins.jaxb2.version>0.13.2</plugins.jaxb2.version>
         <plugins.jaxws.version>2.4.1</plugins.jaxws.version>
-
         <plugins.jgitflow.version>1.0-m5.1</plugins.jgitflow.version>
+
+        <!-- security -->
+        <plugins.dependency-check-maven.version>2.1.0</plugins.dependency-check-maven.version>
+        <dependency-check-maven.cveUrl12Modified>https://nvd.nist.gov/download/nvdcve-Modified.xml.gz</dependency-check-maven.cveUrl12Modified>
+        <dependency-check-maven.cveUrl20Modified>https://nvd.nist.gov/feeds/xml/cve/nvdcve-2.0-Modified.xml.gz</dependency-check-maven.cveUrl20Modified>
+        <dependency-check-maven.cveUrl12Base>https://nvd.nist.gov/download/nvdcve-%d.xml.organization</dependency-check-maven.cveUrl12Base>
+        <dependency-check-maven.cveUrl20Base>https://nvd.nist.gov/feeds/xml/cve/nvdcve-2.0-%d.xml.gz</dependency-check-maven.cveUrl20Base>
+        <dependency-check-maven.enableExperimental>true</dependency-check-maven.enableExperimental>
+        <dependency-check-maven.failOnError>true</dependency-check-maven.failOnError>
+        <dependency-check-maven.format>HTML</dependency-check-maven.format>
+
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
 
         <artifactory.dist.url>https://libraries.dev2.cloud.local/artifactory</artifactory.dist.url>
@@ -134,10 +144,6 @@
     PREREQUISITES
     =============
     -->
-
-    <prerequisites>
-        <maven>${maven.minimum.version}</maven>
-    </prerequisites>
 
 
     <!--
@@ -344,7 +350,7 @@
                     <version>${plugins.maven.release.version}</version>
                 </plugin>
 
-		<plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-remote-resources-plugin</artifactId>
                     <version>${plugins.maven.remote.resources.version}</version>
@@ -474,6 +480,20 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>${plugins.maven.source.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.owasp</groupId>
+                    <artifactId>dependency-check-maven</artifactId>
+                    <version>${plugins.dependency-check-maven.version}</version>
+                    <configuration>
+                        <cveUrl12Modified>${dependency-check-maven.cveUrl12Modified}</cveUrl12Modified>
+                        <cveUrl20Modified>${dependency-check-maven.cveUrl20Modified}</cveUrl20Modified>
+                        <cveUrl12Base>${dependency-check-maven.cveUrl12Base}</cveUrl12Base>
+                        <cveUrl20Base>${dependency-check-maven.cveUrl20Base}</cveUrl20Base>
+                        <enableExperimental>${dependency-check-maven.enbleExperimental}</enableExperimental>
+                        <failOnError>${dependency-check-maven.failOnError}</failOnError>
+                        <format>${dependency-check-maven.format}</format>
+                    </configuration>
                 </plugin>
             </plugins>
 
@@ -996,6 +1016,51 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+
+        <profile>
+            <id>owasp-dependency-check</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.owasp</groupId>
+                        <artifactId>dependency-check-maven</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.owasp</groupId>
+                        <artifactId>dependency-check-maven</artifactId>
+                        <version>${plugins.dependency-check-maven.version}</version>
+                        <configuration>
+                            <cveUrl12Modified>${dependency-check-maven.cveUrl12Modified}</cveUrl12Modified>
+                            <cveUrl20Modified>${dependency-check-maven.cveUrl20Modified}</cveUrl20Modified>
+                            <cveUrl12Base>${dependency-check-maven.cveUrl12Base}</cveUrl12Base>
+                            <cveUrl20Base>${dependency-check-maven.cveUrl20Base}</cveUrl20Base>
+                            <enableExperimental>${dependency-check-maven.enableExperimental}</enableExperimental>
+                            <failOnError>false</failOnError>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <id>aggregate</id>
+                                <inherited>false</inherited>
+                                <reports>
+                                    <report>aggregate</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                </plugins>
+            </reporting>
         </profile>
 
         <profile>
