@@ -81,6 +81,8 @@
         <plugins.maven.scm.version>1.9.5</plugins.maven.scm.version>
 
         <plugins.maven.site.version>3.6</plugins.maven.site.version>
+        <!-- reporting: default output Directory but make it a property so its configurable -->
+        <reporting.outputDirectory>${basedir}/target/site</reporting.outputDirectory>
 
         <plugins.maven.wagon.version>2.12</plugins.maven.wagon.version>
         <plugins.maven.war.version>3.1.0</plugins.maven.war.version>
@@ -123,6 +125,7 @@
         <artifactory.dist.url>https://libraries.dev2.cloud.local/artifactory</artifactory.dist.url>
         <cpp.dist.releaseRepoUrl>${artifactory.dist.url}/libs-release-local/</cpp.dist.releaseRepoUrl>
         <cpp.dist.snapshotRepoUrl>${artifactory.dist.url}/libs-snapshot-local/</cpp.dist.snapshotRepoUrl>
+        <cpp.dist.siteRepoUrl>${artifactory.dist.url}/maven-site-releases</cpp.dist.siteRepoUrl>
 
         <gerrit.scm.url>ssh://coderepo.dev2.cloud.local:29418</gerrit.scm.url>
         <cpp.scm.project>cpp.platform.maven.parent-pom</cpp.scm.project>
@@ -495,6 +498,11 @@
                         <format>${dependency-check-maven.format}</format>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>taglist-maven-plugin</artifactId>
+                    <version>${plugins.taglist.version}</version>
+                </plugin>
             </plugins>
 
         </pluginManagement>
@@ -648,6 +656,7 @@
     -->
 
     <reporting>
+        <outputDirectory>${reporting.outputDirectory}</outputDirectory>
 
         <plugins>
             <!-- Define reports plugin - http://maven.apache.org/plugins/maven-site-plugin/examples/configuring-reports.html and http://maven.apache.org/plugins/maven-project-info-reports-plugin/ -->
@@ -657,6 +666,7 @@
                 <version>${plugins.maven.project.info.reports.version}</version>
                 <reportSets>
                     <reportSet>
+                        <id>default</id>
                         <reports>
                             <report>cim</report>
                             <report>dependencies</report>
@@ -679,6 +689,7 @@
                 <version>${plugins.maven.javadoc.version}</version>
                 <!-- Configuration options - http://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html -->
                 <configuration>
+                    <aggregate>true</aggregate>
                     <detectLinks/>
                     <links>
                         <link>${javadoc.java.link}</link>
@@ -695,52 +706,18 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>${plugins.maven.surefire.version}</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${plugins.maven.surefire.version}</version>
-            </plugin>
-
-            <!-- Check coding style - http://maven.apache.org/plugins/maven-checkstyle-plugin/ -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${plugins.maven.checkstyle.version}</version>
-            </plugin>
-
-            <!-- Generate a cross-reference of the projects sources - http://maven.apache.org/plugins/maven-jxr-plugin/usage.html -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>${plugins.maven.jxr.version}</version>
-            </plugin>
-
-            <!-- Look for potential code problems using FindBugs - http://mojo.codehaus.org/findbugs-maven-plugin/ -->
-            <!--
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${plugins.findbugs.version}</version>
                 <configuration>
-                    <xmlOutput>true</xmlOutput>
-            -->
-            <!-- Optional directory to put findbugs xdoc xml report -->
-            <!--
-                     <xmlOutputDirectory>target/site</xmlOutputDirectory>
+                    <aggregate>true</aggregate>
                 </configuration>
-            </plugin>
-            -->
-
-            <!-- Look for potential code problems using PMD - http://pmd.sourceforge.net/pmd-5.0.0/ -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${plugins.maven.pmd.version}</version>
-                <configuration>
-                    <targetJdk>${compiler.target}</targetJdk>
-                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <id>default</id>
+                        <reports>
+                            <report>report-only</report>
+                            <report>failsafe-report-only</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
 
             <!-- Generate a report on various tags found in the code - http://mojo.codehaus.org/taglist-maven-plugin/ -->
@@ -749,6 +726,7 @@
                 <artifactId>taglist-maven-plugin</artifactId>
                 <version>${plugins.taglist.version}</version>
                 <configuration>
+                    <aggregate>true</aggregate>
                     <tagListOptions>
                         <tagClasses>
                             <tagClass>
@@ -776,6 +754,7 @@
                 <version>${plugins.versions.version}</version>
                 <reportSets>
                     <reportSet>
+                        <id>default</id>
                         <reports>
                             <report>dependency-updates-report</report>
                             <report>plugin-updates-report</report>
@@ -785,24 +764,19 @@
                 </reportSets>
             </plugin>
 
-            <!-- Generate reports on code test coverage using cobertura -->
-
-            <!-- integrate maven-cobertura-plugin to project site -->
+            <!-- Generate reports on test coverage - http://www.eclemma.org/jacoco/trunk/doc/maven.html -->
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>${plugins.cobertura.version}</version>
-                <configuration>
-                    <!-- Added instrumentation and quiet=true to silence Java 8 lambda warnings -->
-                    <instrumentation>
-                        <ignoreTrivial>true</ignoreTrivial>
-                    </instrumentation>
-                    <quiet>true</quiet>
-                    <formats>
-                        <format>html</format>
-                        <format>xml</format>
-                    </formats>
-                </configuration>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${plugins.jacoco.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <id>default</id>
+                        <reports>
+                            <report>report-aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
 
         </plugins>
@@ -1277,5 +1251,10 @@
             <name>libraries.dev2.cloud.local-snapshot</name>
             <url>${cpp.dist.snapshotRepoUrl}</url>
         </snapshotRepository>
+        <site>
+            <id>HASS</id>
+            <name>libraries.dev2.cloud.local-site</name>
+            <url>${cpp.dist.siteRepoUrl}</url>
+        </site>
     </distributionManagement>
 </project>
