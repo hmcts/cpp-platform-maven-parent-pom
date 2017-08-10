@@ -112,13 +112,6 @@
 
         <!-- security -->
         <plugins.dependency-check-maven.version>2.1.0</plugins.dependency-check-maven.version>
-        <dependency-check-maven.cveUrl12Modified>https://nvd.nist.gov/download/nvdcve-Modified.xml.gz</dependency-check-maven.cveUrl12Modified>
-        <dependency-check-maven.cveUrl20Modified>https://nvd.nist.gov/feeds/xml/cve/nvdcve-2.0-Modified.xml.gz</dependency-check-maven.cveUrl20Modified>
-        <dependency-check-maven.cveUrl12Base>https://nvd.nist.gov/download/nvdcve-%d.xml.organization</dependency-check-maven.cveUrl12Base>
-        <dependency-check-maven.cveUrl20Base>https://nvd.nist.gov/feeds/xml/cve/nvdcve-2.0-%d.xml.gz</dependency-check-maven.cveUrl20Base>
-        <dependency-check-maven.enableExperimental>true</dependency-check-maven.enableExperimental>
-        <dependency-check-maven.failOnError>true</dependency-check-maven.failOnError>
-        <dependency-check-maven.format>HTML</dependency-check-maven.format>
 
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
 
@@ -488,15 +481,6 @@
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
                     <version>${plugins.dependency-check-maven.version}</version>
-                    <configuration>
-                        <cveUrl12Modified>${dependency-check-maven.cveUrl12Modified}</cveUrl12Modified>
-                        <cveUrl20Modified>${dependency-check-maven.cveUrl20Modified}</cveUrl20Modified>
-                        <cveUrl12Base>${dependency-check-maven.cveUrl12Base}</cveUrl12Base>
-                        <cveUrl20Base>${dependency-check-maven.cveUrl20Base}</cveUrl20Base>
-                        <enableExperimental>${dependency-check-maven.enbleExperimental}</enableExperimental>
-                        <failOnError>${dependency-check-maven.failOnError}</failOnError>
-                        <format>${dependency-check-maven.format}</format>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -1016,11 +1000,6 @@
                         <artifactId>dependency-check-maven</artifactId>
                         <version>${plugins.dependency-check-maven.version}</version>
                         <configuration>
-                            <cveUrl12Modified>${dependency-check-maven.cveUrl12Modified}</cveUrl12Modified>
-                            <cveUrl20Modified>${dependency-check-maven.cveUrl20Modified}</cveUrl20Modified>
-                            <cveUrl12Base>${dependency-check-maven.cveUrl12Base}</cveUrl12Base>
-                            <cveUrl20Base>${dependency-check-maven.cveUrl20Base}</cveUrl20Base>
-                            <enableExperimental>${dependency-check-maven.enableExperimental}</enableExperimental>
                             <failOnError>false</failOnError>
                         </configuration>
                         <reportSets>
