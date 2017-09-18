@@ -128,6 +128,12 @@
         <cpp.scm.url>${gerrit.web.url}/${cpp.scm.project}</cpp.scm.url>
         <liquibase.core.version>3.5.2</liquibase.core.version>
 
+        <!-- JGitflow settings
+             Put them in properties so they can be controlled from command line
+             Otherwise they can't be overridden
+         -->
+        <pushReleases>true</pushReleases>
+
         <!-- CI hooks -->
         <ci.hook.fixup-versions.skip>true</ci.hook.fixup-versions.skip>
 
@@ -469,7 +475,7 @@
                         </flowInitContext>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <enableSshAgent>true</enableSshAgent>
-                        <pushReleases>true</pushReleases>
+                        <pushReleases>${pushReleases}</pushReleases>
                     </configuration>
                 </plugin>
                 <plugin>

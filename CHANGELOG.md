@@ -5,6 +5,12 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+### Fixed
+- Make JGitFlow's pushReleases a normal maven property so it can be overidden on the command line.
+  This allows us to disable the pushReleases functionality in test environments
+
+## [v2.1.0]
+
 ### Changed
 - Optional hook capability: fixup-versions, defaults to disabled.
   Used to fixate a property with the pom's version, used in inherited poms to import BOMs
