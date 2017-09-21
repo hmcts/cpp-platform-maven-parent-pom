@@ -13,6 +13,9 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 - Plugins updated to latest versions
 - Minimum Maven version set to 3.3.9
 
+### Removed
+- liquibase.core.version was not used
+
 ## [v2.1.0]
 
 ### Changed

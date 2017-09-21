@@ -126,7 +126,6 @@
         <cpp.scm.developerConnection>${cpp.scm.connection}</cpp.scm.developerConnection>
         <gerrit.web.url>https://coderepo.dev2.cloud.local/</gerrit.web.url>
         <cpp.scm.url>${gerrit.web.url}/${cpp.scm.project}</cpp.scm.url>
-        <liquibase.core.version>3.5.2</liquibase.core.version>
 
         <!-- JGitflow settings
              Put them in properties so they can be controlled from command line
