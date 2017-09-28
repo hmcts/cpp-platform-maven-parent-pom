@@ -126,6 +126,7 @@
         <cpp.scm.developerConnection>${cpp.scm.connection}</cpp.scm.developerConnection>
         <gerrit.web.url>https://coderepo.dev2.cloud.local/</gerrit.web.url>
         <cpp.scm.url>${gerrit.web.url}/${cpp.scm.project}</cpp.scm.url>
+        <cpp.site.project.profile>production</cpp.site.project.profile>
 
         <!-- JGitflow settings
              Put them in properties so they can be controlled from command line

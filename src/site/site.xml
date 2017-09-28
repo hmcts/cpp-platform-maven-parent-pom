@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/DECORATION/1.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.7.0.xsd">
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.6</version>
+    </skin>
+    <custom>
+        <fluidoSkin>
+            <breadcrumbDivider>»</breadcrumbDivider>
+            <profile>${cpp.site.project.profile}</profile>
+            <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+        </fluidoSkin>
+    </custom>
+    <poweredBy>
+        <logo name="MoJ Logo" img="images/moj-logo.png"/>
+    </poweredBy>
+    <version position="right"/>
+    <publishDate position="right"/>
+    <body>
+        <breadcrumbs/>
+        <menu ref="reports"/>
+        <menu ref="parent"/>
+        <menu ref="modules"/>
+    </body>
+</project>
