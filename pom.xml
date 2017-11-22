@@ -101,6 +101,7 @@
         <!-- testing -->
         <plugins.maven.surefire.version>2.20.1</plugins.maven.surefire.version>
         <plugins.maven.failsafe.version>${plugins.maven.surefire.version}</plugins.maven.failsafe.version>
+        <plugins.pitest.version>1.2.4</plugins.pitest.version>
 
         <plugins.maven.wildfly.version>1.2.0.Final</plugins.maven.wildfly.version>
 
@@ -127,6 +128,8 @@
         <gerrit.web.url>https://coderepo.dev2.cloud.local/</gerrit.web.url>
         <cpp.scm.url>${gerrit.web.url}/${cpp.scm.project}</cpp.scm.url>
         <cpp.site.project.profile>production</cpp.site.project.profile>
+
+        <pitest.enabled>false</pitest.enabled>
 
         <!-- JGitflow settings
              Put them in properties so they can be controlled from command line
@@ -495,6 +498,28 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>taglist-maven-plugin</artifactId>
                     <version>${plugins.taglist.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.pitest</groupId>
+                    <artifactId>pitest-maven</artifactId>
+                    <version>${plugins.pitest.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>mutationCoverage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <mutationThreshold>0</mutationThreshold>
+                        <failWhenNoMutations>false</failWhenNoMutations>
+                        <threads>5</threads>
+                        <excludedClasses>
+                            <!-- Exclude integration tests -->
+                            <excludedClass>*IT</excludedClass>
+                        </excludedClasses>
+                    </configuration>
                 </plugin>
             </plugins>
 
@@ -1225,6 +1250,23 @@
                     <artifactId>postgresql</artifactId>
                 </dependency>
             </dependencies>
+        </profile>
+        <profile>
+            <id>pitest</id>
+            <activation>
+                <property>
+                    <name>pitest.enabled</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
 
     </profiles>
