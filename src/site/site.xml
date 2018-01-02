@@ -19,8 +19,8 @@
     <publishDate position="right"/>
     <body>
         <breadcrumbs/>
-        <menu ref="reports"/>
-        <menu ref="parent"/>
-        <menu ref="modules"/>
+        <menu ref="reports" inherit="top"/>
+        <menu ref="parent" inherit="top"/>
+        <menu ref="modules" inherit="top"/>
     </body>
 </project>

@@ -8,6 +8,8 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 ### Fixed
 - Make JGitFlow's pushReleases a normal maven property so it can be overidden on the command line.
   This allows us to disable the pushReleases functionality in test environments
+- Automatically add site descriptor if present in usual location
+- Fixup default site descriptor so menus are generated correctly
 
 ### Changed
 - Plugins updated to latest versions

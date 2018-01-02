@@ -1192,6 +1192,30 @@
             </build>
         </profile>
         <profile>
+            <id>common-site-descriptor</id>
+            <activation>
+                <file>
+                    <exists>src/site/site.xml</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-site-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-descriptor</id>
+                                <goals>
+                                    <goal>attach-descriptor</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>liquibase-jar</id>
             <activation>
                 <file>
