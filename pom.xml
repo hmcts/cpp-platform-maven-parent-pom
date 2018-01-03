@@ -119,7 +119,7 @@
         <artifactory.dist.url>https://libraries.dev2.cloud.local/artifactory</artifactory.dist.url>
         <cpp.dist.releaseRepoUrl>${artifactory.dist.url}/libs-release-local/</cpp.dist.releaseRepoUrl>
         <cpp.dist.snapshotRepoUrl>${artifactory.dist.url}/libs-snapshot-local/</cpp.dist.snapshotRepoUrl>
-        <cpp.dist.siteRepoUrl>${artifactory.dist.url}/maven-site-releases</cpp.dist.siteRepoUrl>
+        <cpp.dist.siteRepoUrl>dav:${artifactory.dist.url}/maven-site-releases/</cpp.dist.siteRepoUrl>
 
         <gerrit.scm.url>ssh://coderepo.dev2.cloud.local:29418</gerrit.scm.url>
         <cpp.scm.project>cpp.platform.maven.parent-pom</cpp.scm.project>
@@ -127,6 +127,7 @@
         <cpp.scm.developerConnection>${cpp.scm.connection}</cpp.scm.developerConnection>
         <gerrit.web.url>https://coderepo.dev2.cloud.local/</gerrit.web.url>
         <cpp.scm.url>${gerrit.web.url}/${cpp.scm.project}</cpp.scm.url>
+        <!-- https://maven.apache.org/skins/maven-fluido-skin/ Project Profile -->
         <cpp.site.project.profile>production</cpp.site.project.profile>
 
         <pitest.enabled>false</pitest.enabled>
@@ -143,16 +144,6 @@
         <!-- Updated by CI hooks -->
         <cpp.parent-pom.version>2.3.1-SNAPSHOT</cpp.parent-pom.version>
     </properties>
-
-    <!--
-    =============
-    PREREQUISITES
-    =============
-    -->
-    <prerequisites>
-        <maven>${maven.minimum.version}</maven>
-    </prerequisites>
-
 
     <!--
     =====
@@ -436,14 +427,6 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>${plugins.buildhelper.version}</version>
-                    <executions>
-                        <execution>
-                            <id>maven-version</id>
-                            <goals>
-                                <goal>maven-version</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
 
                 <plugin>
@@ -527,6 +510,18 @@
 
         <!-- Plugin configuration -->
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>maven-version</id>
+                        <goals>
+                            <goal>maven-version</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <!-- Copy dependencies - http://maven.apache.org/plugins/maven-dependency-plugin/ -->
             <plugin>
