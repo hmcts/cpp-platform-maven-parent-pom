@@ -22,6 +22,7 @@
         <url>${cpp.scm.url}</url>
         <tag>HEAD</tag>
     </scm>
+    <url>http://docmentation/cpp/${project.groupId}/${project.artifactId}/</url>
 
     <!--
     ==========
@@ -105,14 +106,14 @@
 
         <plugins.maven.wildfly.version>1.2.1.Final</plugins.maven.wildfly.version>
 
-        <plugins.jacoco.version>0.7.9</plugins.jacoco.version>
+        <plugins.jacoco.version>0.8.0</plugins.jacoco.version>
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
         <plugins.jaxb2.version>0.13.3</plugins.jaxb2.version>
         <plugins.jaxws.version>2.5</plugins.jaxws.version>
         <plugins.jgitflow.version>1.0-m5.1</plugins.jgitflow.version>
 
         <!-- security -->
-        <plugins.dependency-check-maven.version>3.0.2</plugins.dependency-check-maven.version>
+        <plugins.dependency-check-maven.version>3.1.0</plugins.dependency-check-maven.version>
 
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
 
@@ -245,8 +246,20 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${plugins.maven.dependency.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>${plugins.maven.deploy.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${plugins.maven.enforcer.version}</version>
                 </plugin>
 
                 <plugin>
@@ -473,6 +486,11 @@
                     <version>${plugins.maven.source.version}</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${plugins.jacoco.version}</version>
+                </plugin>
+                <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
                     <version>${plugins.dependency-check-maven.version}</version>
@@ -527,7 +545,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>${plugins.maven.dependency.version}</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
@@ -547,7 +564,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>${plugins.maven.enforcer.version}</version>
                 <executions>
                     <execution>
                         <id>enforce-rules</id>
@@ -590,7 +606,6 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${plugins.jacoco.version}</version>
                 <executions>
                     <execution>
                         <id>default-prepare-agent</id>
@@ -685,11 +700,11 @@
                             <report>dependencies</report>
                             <report>dependency-convergence</report>
                             <report>dependency-management</report>
-                            <report>distribution-management</report>
-                            <report>help</report>
+                            <report>plugin-management</report>
+                            <report>plugins</report>
                             <report>index</report>
-                            <report>modules</report>
                             <report>scm</report>
+                            <report>summary</report>
                         </reports>
                     </reportSet>
                 </reportSets>
@@ -1301,7 +1316,7 @@
             <url>${cpp.dist.snapshotRepoUrl}</url>
         </snapshotRepository>
         <site>
-            <id>HASS</id>
+            <id>HASS-docs</id>
             <name>libraries.dev2.cloud.local-site</name>
             <url>${cpp.dist.siteRepoUrl}</url>
         </site>

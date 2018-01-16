@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/DECORATION/1.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.7.0.xsd">
+<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 http://maven.apache.org/xsd/decoration-1.8.0.xsd">
     <skin>
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-fluido-skin</artifactId>
@@ -12,9 +12,9 @@
             <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
         </fluidoSkin>
     </custom>
-    <poweredBy>
-        <logo name="MoJ Logo" img="images/moj-logo.png"/>
-    </poweredBy>
+    <bannerLeft>
+        <src>images/govuk-crest.png</src>
+    </bannerLeft>
     <version position="right"/>
     <publishDate position="right"/>
     <body>
