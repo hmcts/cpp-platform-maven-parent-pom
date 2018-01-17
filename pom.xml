@@ -139,6 +139,9 @@
          -->
         <pushReleases>true</pushReleases>
 
+        <!-- Release Goals -->
+        <maven-release-plugin.goals>deploy</maven-release-plugin.goals>
+
         <!-- CI hooks -->
         <ci.hook.fixup-versions.skip>true</ci.hook.fixup-versions.skip>
 
@@ -1009,7 +1012,7 @@
                         <configuration>
                             <autoVersionSubmodules>true</autoVersionSubmodules>
                             <completionGoals>-N exec:exec@fixup-property-versions</completionGoals>
-                            <goals>deploy</goals>
+                            <goals>${maven-release-plugin.goals}</goals>
                             <localCheckout>true</localCheckout>
                             <preparationGoals>exec:exec@fixup-property-versions clean verify</preparationGoals>
                             <releaseProfiles>release</releaseProfiles>
@@ -1301,6 +1304,12 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>release-site</id>
+            <properties>
+                <maven-release-plugin.goals>deploy site:deploy</maven-release-plugin.goals>
+            </properties>
         </profile>
 
     </profiles>
