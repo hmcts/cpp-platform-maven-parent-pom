@@ -5,6 +5,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [2.4.1] - 2018-01-22
+
+### Fixed
+- Reinstated liquibase.core.version property
+
 ## [2.4.0] - 2018-01-18
 
 ### Fixed
