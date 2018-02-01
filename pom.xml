@@ -117,6 +117,7 @@
         <plugins.dependency-check-maven.version>3.1.0</plugins.dependency-check-maven.version>
 
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
+        <enforcer.skipMoJLatestInterfacesRule>false</enforcer.skipMoJLatestInterfacesRule>
 
         <artifactory.dist.url>https://libraries.dev2.cloud.local/artifactory</artifactory.dist.url>
         <cpp.dist.releaseRepoUrl>${artifactory.dist.url}/libs-release-local/</cpp.dist.releaseRepoUrl>
@@ -570,7 +571,7 @@
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>enforce-rules</id>
+                        <id>enforce-prerequisites</id>
                         <goals>
                             <goal>enforce</goal>
                         </goals>
@@ -587,10 +588,22 @@
                                 <requirePluginVersions>
                                     <message>Please define plugin versions</message>
                                 </requirePluginVersions>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>enforce-moj-latest-interfaces</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <!--Available rules - http://maven.apache.org/enforcer/enforcer-rules/-->
+                            <rules>
                                 <RequireLatestVersionsRule implementation="uk.gov.justice.maven.rules.RequireLatestVersionsRule">
                                     <filter>^raml/json/schema/?|.*raml$</filter>
                                 </RequireLatestVersionsRule>
                             </rules>
+                            <skip>${enforcer.skipMoJLatestInterfacesRule}</skip>
                         </configuration>
                     </execution>
                 </executions>
@@ -1312,7 +1325,6 @@
                 <maven-release-plugin.goals>deploy site:deploy</maven-release-plugin.goals>
             </properties>
         </profile>
-
     </profiles>
     <distributionManagement>
         <repository>
