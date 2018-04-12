@@ -115,6 +115,12 @@
 
         <!-- security -->
         <plugins.dependency-check-maven.version>3.1.0</plugins.dependency-check-maven.version>
+        <plugins.maven.gpg.version>1.6</plugins.maven.gpg.version>
+        <skip.maven.gpg.plugin>true</skip.maven.gpg.plugin>
+        <plugins.pgp.maven.version>1.1</plugins.pgp.maven.version>
+        <skip.pgp.maven.plugin>true</skip.pgp.maven.plugin>
+        <pgp.passphrase></pgp.passphrase>
+        <pgp.secretkey></pgp.secretkey>
 
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
         <enforcer.skipMoJLatestInterfacesRule>false</enforcer.skipMoJLatestInterfacesRule>
@@ -526,6 +532,18 @@
                             <excludedClass>*IT</excludedClass>
                         </excludedClasses>
                     </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${plugins.maven.gpg.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.kohsuke</groupId>
+                    <artifactId>pgp-maven-plugin</artifactId>
+                    <version>${plugins.pgp.maven.version}</version>
                 </plugin>
             </plugins>
 
@@ -1033,6 +1051,7 @@
                             <tagNameFormat>v@{project.version}</tagNameFormat>
                         </configuration>
                     </plugin>
+
                 </plugins>
             </build>
         </profile>
@@ -1075,6 +1094,62 @@
                     </plugin>
                 </plugins>
             </reporting>
+        </profile>
+
+        <profile>
+            <id>sign-maven-gpg-plugin</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <!-- GPG 2.x, requires allow-pinentry-loopback in gpg-agent.conf -->
+                                    <gpgArguments>
+                                        <arg>--batch</arg>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                    <skip>${skip.maven.gpg.plugin}</skip>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>sign-pgp-maven-plugin</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.kohsuke</groupId>
+                        <artifactId>pgp-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <passphrase>${pgp.passphrase}</passphrase>
+                                    <secretkey>${pgp.secretkey}</secretkey>
+                                    <skip>${skip.pgp.maven.plugin}</skip>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
 
         <profile>

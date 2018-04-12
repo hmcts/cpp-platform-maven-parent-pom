@@ -5,6 +5,9 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+### Added
+- GPG Signature capability
+
 ## [2.4.1] - 2018-01-22
 
 ### Fixed
