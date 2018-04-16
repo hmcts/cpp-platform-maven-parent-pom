@@ -20,6 +20,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
     jacoco-maven-plugin: 0.8.0 -> 0.8.1
     pitest-maven-plugin: 1.3.1 -> 1.3.2
 
+- Liquibase updated to latest version:
+    liquibase-core: 3.5.2 -> 3.6.1
+    liquibase-maven-plugin: 3.5.3 -> 3.6.1
+
 ## [2.4.1] - 2018-01-22
 
 ### Fixed
