@@ -8,6 +8,17 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 ### Added
 - GPG Signature capability
 
+### Changed
+- Plugins updated to latest versions
+    maven-clean-plugin: 3.0.0 -> 3.1.0
+    maven-dependency-version: 3.0.2 -> 3.1.0
+    maven-jar-plugin: 3.0.2 -> 3.1.0
+    maven-shade-plugin: 3.1.0 -> 3.1.1
+    maven-surefire-plugin / maven-failsafe-plugin:  2.20.1 -> 2.21.0
+    dependency-check-maven plugin: 3.1.0 -> 3.1.2
+    jacoco-maven-plugin: 0.8.0 -> 0.8.1
+    pitest-maven-plugin: 1.3.1 -> 1.3.2
+
 ## [2.4.1] - 2018-01-22
 
 ### Fixed
