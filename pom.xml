@@ -116,14 +116,8 @@
         <!-- security -->
         <plugins.dependency-check-maven.version>3.1.2</plugins.dependency-check-maven.version>
         <plugins.maven.jarsigner.version>1.4</plugins.maven.jarsigner.version>
-        <skip.sign.maven.jarsigner.plugin>true</skip.sign.maven.jarsigner.plugin>
-        <skip.verify.maven.jarsigner.plugin>true</skip.verify.maven.jarsigner.plugin>
         <plugins.maven.gpg.version>1.6</plugins.maven.gpg.version>
-        <skip.maven.gpg.plugin>true</skip.maven.gpg.plugin>
         <plugins.pgp.maven.version>1.1</plugins.pgp.maven.version>
-        <skip.pgp.maven.plugin>true</skip.pgp.maven.plugin>
-        <pgp.passphrase></pgp.passphrase>
-        <pgp.secretkey></pgp.secretkey>
 
         <plugins.maven.remote.resources.skip>false</plugins.maven.remote.resources.skip>
         <enforcer.skipMoJLatestInterfacesRule>false</enforcer.skipMoJLatestInterfacesRule>
@@ -1107,6 +1101,10 @@
 
         <profile>
             <id>sign-maven-jarsigner-plugin</id>
+            <properties>
+                <skip.sign.maven.jarsigner.plugin>false</skip.sign.maven.jarsigner.plugin>
+                <skip.verify.maven.jarsigner.plugin>false</skip.verify.maven.jarsigner.plugin>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -1141,6 +1139,9 @@
 
         <profile>
             <id>sign-maven-gpg-plugin</id>
+            <properties>
+                <skip.maven.gpg.plugin>false</skip.maven.gpg.plugin>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -1168,6 +1169,12 @@
 
         <profile>
             <id>sign-pgp-maven-plugin</id>
+            <properties>
+                <pgp.homedir>${project.basedir}</pgp.homedir>
+                <pgp.passphrase>file:${pgp.homedir}/pgp.passphrase</pgp.passphrase>
+                <pgp.secretkey>file:${pgp.homedir}/pgp.secretkey</pgp.secretkey>
+                <skip.pgp.maven.plugin>false</skip.pgp.maven.plugin>
+            </properties>
             <build>
                 <plugins>
                     <plugin>

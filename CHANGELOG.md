@@ -6,7 +6,8 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 ## [Unreleased]
 
 ### Added
-- GPG Signature capability
+- GPG Signature capability (maven-gpg-plugin, pgp-maven-plugin)
+- JAR Signature capabiilty (maven-jarsigner-plugin)
 
 ### Changed
 - Plugins updated to latest versions
