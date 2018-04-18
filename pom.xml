@@ -10,7 +10,7 @@
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>2.5.2-SNAPSHOT</version>
+    <version>2.5.2</version>
     <packaging>pom</packaging>
 
     <name>CPP Parent POM</name>
@@ -20,7 +20,7 @@
         <connection>${cpp.scm.connection}</connection>
         <developerConnection>${cpp.scm.developerConnection}</developerConnection>
         <url>${cpp.scm.url}</url>
-        <tag>HEAD</tag>
+        <tag>v2.5.2</tag>
     </scm>
     <url>http://docmentation/cpp/${project.groupId}/${project.artifactId}/</url>
 
@@ -151,7 +151,7 @@
         <ci.hook.fixup-versions.skip>true</ci.hook.fixup-versions.skip>
 
         <!-- Updated by CI hooks -->
-        <cpp.parent-pom.version>2.5.2-SNAPSHOT</cpp.parent-pom.version>
+        <cpp.parent-pom.version>2.5.2</cpp.parent-pom.version>
     </properties>
 
     <!--
