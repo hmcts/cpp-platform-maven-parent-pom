@@ -61,12 +61,12 @@
         <plugins.cobertura.version>2.7</plugins.cobertura.version>
         <plugins.findbugs.version>3.0.3</plugins.findbugs.version>
         <plugins.maven.checkstyle.version>2.17</plugins.maven.checkstyle.version>
-        <plugins.maven.enforcer.version>3.0.0-M1</plugins.maven.enforcer.version>
+        <plugins.maven.enforcer.version>3.0.0-M2</plugins.maven.enforcer.version>
         <plugins.require-latest-versions-enforcer-rule.version>1.1.1</plugins.require-latest-versions-enforcer-rule.version>
 
         <plugins.maven.clean.version>3.1.0</plugins.maven.clean.version>
         <plugins.maven.compiler.version>3.7.0</plugins.maven.compiler.version>
-        <plugins.maven.dependency.version>3.1.0</plugins.maven.dependency.version>
+        <plugins.maven.dependency.version>3.1.1</plugins.maven.dependency.version>
         <plugins.maven.ear.version>2.10.1</plugins.maven.ear.version>
         <plugins.maven.ejb.version>2.5.1</plugins.maven.ejb.version>
         <plugins.maven.install.version>2.5.2</plugins.maven.install.version>
@@ -79,15 +79,15 @@
         <plugins.maven.resources.version>3.1.0</plugins.maven.resources.version>
         <plugins.maven.release.version>2.5.3</plugins.maven.release.version>
         <plugins.maven.remote.resources.version>1.5</plugins.maven.remote.resources.version>
-        <plugins.maven.scm.version>1.9.5</plugins.maven.scm.version>
+        <plugins.maven.scm.version>1.10.0</plugins.maven.scm.version>
         <liquibase.core.version>3.6.1</liquibase.core.version>
 
         <plugins.maven.site.version>3.7.1</plugins.maven.site.version>
         <!-- reporting: default output Directory but make it a property so its configurable -->
         <reporting.outputDirectory>${basedir}/target/site</reporting.outputDirectory>
 
-        <plugins.maven.wagon.version>3.0.0</plugins.maven.wagon.version>
-        <plugins.maven.war.version>3.2.0</plugins.maven.war.version>
+        <plugins.maven.wagon.version>3.1.0</plugins.maven.wagon.version>
+        <plugins.maven.war.version>3.2.2</plugins.maven.war.version>
         <plugins.taglist.version>2.4</plugins.taglist.version>
         <plugins.versions.version>2.5</plugins.versions.version>
         <plugins.maven.liquibase.version>3.6.1</plugins.maven.liquibase.version>
@@ -97,11 +97,11 @@
         <plugins.buildhelper.version>3.0.0</plugins.buildhelper.version>
         <plugins.groovy.maven.version>2.0</plugins.groovy.maven.version>
         <plugins.exec.maven.version>1.6.0</plugins.exec.maven.version>
-        <plugins.maven.javadoc.version>3.0.0</plugins.maven.javadoc.version>
+        <plugins.maven.javadoc.version>3.0.1</plugins.maven.javadoc.version>
         <plugins.maven.source.version>3.0.1</plugins.maven.source.version>
 
         <!-- testing -->
-        <plugins.maven.surefire.version>2.21.0</plugins.maven.surefire.version>
+        <plugins.maven.surefire.version>2.22.0</plugins.maven.surefire.version>
         <plugins.maven.failsafe.version>${plugins.maven.surefire.version}</plugins.maven.failsafe.version>
         <plugins.pitest.version>1.4.0</plugins.pitest.version>
 
@@ -109,12 +109,12 @@
 
         <plugins.jacoco.version>0.8.1</plugins.jacoco.version>
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
-        <plugins.jaxb2.version>0.13.3</plugins.jaxb2.version>
+        <plugins.jaxb2.version>0.14.0</plugins.jaxb2.version>
         <plugins.jaxws.version>2.5</plugins.jaxws.version>
         <plugins.jgitflow.version>1.0-m5.1</plugins.jgitflow.version>
 
         <!-- security -->
-        <plugins.dependency-check-maven.version>3.1.2</plugins.dependency-check-maven.version>
+        <plugins.dependency-check-maven.version>3.2.1</plugins.dependency-check-maven.version>
         <plugins.maven.jarsigner.version>1.4</plugins.maven.jarsigner.version>
         <plugins.maven.gpg.version>1.6</plugins.maven.gpg.version>
         <plugins.pgp.maven.version>1.1</plugins.pgp.maven.version>
