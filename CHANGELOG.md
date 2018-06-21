@@ -3,14 +3,34 @@ All notable changes to this project will be documented in this file, which follo
 on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [Unrelease]
 
+### Changed
+
+
+## [2.5.6] - 2018-06-20
+### Changed
+- Reverted:
+    maven-enforcer-plugin: 3.0.0-M2 -> 3.0.0-M1
+  due to failure to process parent-pom plugins
+
+## [2.5.5] - 2018-06-19
 ### Changed
 - Liquibase updated to latest version:
     liquibase-core: 3.5.2 -> 3.6.1
     liquibase-maven-plugin: 3.5.3 -> 3.6.1
 
 - Plugins updated to latest version:
+    maven-javadoc-plugin: 3.0.0 -> 3.0.1
+    maven-surefire-plugin: 2.21.0 -> 2.22.0
+    maven-failsafe-plugin: 2.21.0 -> 2.22.0
+    maven-wagon-plugin: 3.0.0 -> 3.1.0
+    dependency-check-maven-plugin: 3.1.2 -> 3.2.1
+    maven-scm-plugin: 1.9.5 -> 1.10.0
+    maven-war-plugin: 3.2.0 -> 3.2.2
+    maven-enforcer-plugin: 3.0.0-M1 -> 3.0.0-M2
+    maven-dependency-plugin: 3.1.0 -> 3.1.1
+    jaxb2-maven-plugin: 0.13.3 -> 0.14.0
     maven-resources-plugin: 3.0.2 -> 3.1.0
     maven-site-plugin: 3.7 -> 3.7.1
     pitest-maven-plugin: 1.3.2 -> 1.4.0
