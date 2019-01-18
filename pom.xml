@@ -114,7 +114,7 @@
         <plugins.jgitflow.version>1.0-m5.1</plugins.jgitflow.version>
 
         <!-- security -->
-        <plugins.dependency-check-maven.version>3.2.1</plugins.dependency-check-maven.version>
+        <plugins.dependency-check-maven.version>4.0.2</plugins.dependency-check-maven.version>
         <plugins.maven.jarsigner.version>1.4</plugins.maven.jarsigner.version>
         <plugins.maven.gpg.version>1.6</plugins.maven.gpg.version>
         <plugins.pgp.maven.version>1.1</plugins.pgp.maven.version>
