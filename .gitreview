@@ -1,5 +1,6 @@
 [gerrit]
-host=codereview.dev2.cloud.local
+scheme=ssh
+host=coderepo.mdv.cpp.nonlive
 port=29418
 project=cpp.platform.maven.parent-pom
 defaultbranch=master
