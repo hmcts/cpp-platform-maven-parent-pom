@@ -6,7 +6,9 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 ## [Unrelease]
 
 ### Changed
-
+## [2.5.7] - 2019-06-24
+### Changed
+- Update plugins.require-latest-versions-enforcer-rule.version to version 1.2.0, to fix enforcer not checking all framework plugins issue
 
 ## [2.5.6] - 2018-06-20
 ### Changed
