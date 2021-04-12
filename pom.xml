@@ -10,7 +10,7 @@
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>8.0.1-FRAMEWORK-SNAPSHOT</version>
+    <version>11.0.0-FRAMEWORK-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>CPP Parent POM</name>
@@ -36,7 +36,7 @@
 
         <!-- Enforcer settings - ranges need to be in the format defined at http://maven.apache.org/enforcer/enforcer-rules/versionRanges.html -->
         <enforcer.maven.version.range>[${maven.minimum.version},)</enforcer.maven.version.range>
-        <enforcer.java.version.range>[1.8,)</enforcer.java.version.range>
+        <enforcer.java.version.range>[11,)</enforcer.java.version.range>
 
         <!-- Java API versions targeted -->
         <java.se.version>11</java.se.version>
