@@ -4,6 +4,12 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease]
+## [11.0.0-FRAMEWORK-SNAPSHOY] - 2021-05-20
+### Changed
+- Updated to Jee 8.0
+- Updated maven.enforcer.plugin to 3.0.0-M3
+- Updated require-latest-versions-enforcer-rule.plugin to 11.0.0-M1
+
 ## [11.0.0] - 2021-05-01
 ### Changed
 - Updated to Java 11
