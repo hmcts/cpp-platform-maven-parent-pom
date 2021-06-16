@@ -4,7 +4,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease]
-## [11.0.0-FRAMEWORK-SNAPSHOY] - 2021-05-20
+## [11.0.2-FRAMEWORK-SNAPSHOT] - 2021-06-16
+### Changed
+- Add 'javaee-api.version' property of 8.0.1
+
+## [11.0.0-FRAMEWORK-SNAPSHOT] - 2021-05-20
 ### Changed
 - Updated to Jee 8.0
 - Updated maven.enforcer.plugin to 3.0.0-M3
