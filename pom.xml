@@ -80,7 +80,7 @@
         <plugins.maven.release.version>2.5.3</plugins.maven.release.version>
         <plugins.maven.remote.resources.version>1.5</plugins.maven.remote.resources.version>
         <plugins.maven.scm.version>1.10.0</plugins.maven.scm.version>
-        <liquibase.core.version>3.6.1</liquibase.core.version>
+        <liquibase.core.version>3.5.3</liquibase.core.version>
 
         <plugins.maven.site.version>3.7.1</plugins.maven.site.version>
         <!-- reporting: default output Directory but make it a property so its configurable -->
