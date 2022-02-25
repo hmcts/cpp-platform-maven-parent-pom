@@ -4,6 +4,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease]
+## [11.0.3-FRAMEWORK-SNAPSHOT] - 2022-25-02
+### Changed
+- Liquibase version downgraded to 3.5.3
+
 ## [11.0.2-FRAMEWORK-SNAPSHOT] - 2021-06-16
 ### Changed
 - Add 'javaee-api.version' property of 8.0.1
