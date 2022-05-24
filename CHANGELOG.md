@@ -3,8 +3,13 @@ All notable changes to this project will be documented in this file, which follo
 on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
-## [Unrelease]
-## [11.0.3-FRAMEWORK-SNAPSHOT] - 2022-25-02
+## [Unreleased]
+
+## [11.0.4-FRAMEWORK-SNAPSHOT] - 2022-05-24
+### Changed
+- Upgrade Liquibase version to 4.10.0
+
+## [11.0.3-FRAMEWORK-SNAPSHOT] - 2022-02-25
 ### Changed
 - Liquibase version downgraded to 3.5.3
 

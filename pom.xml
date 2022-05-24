@@ -82,7 +82,11 @@
         <plugins.maven.release.version>2.5.3</plugins.maven.release.version>
         <plugins.maven.remote.resources.version>1.5</plugins.maven.remote.resources.version>
         <plugins.maven.scm.version>1.10.0</plugins.maven.scm.version>
-        <liquibase.core.version>3.5.3</liquibase.core.version>
+
+        <!-- liquibase and dependencies -->
+        <liquibase.version>4.10.0</liquibase.version>
+        <snakeyaml.version>1.30</snakeyaml.version>
+        <picocli.version>4.6.3</picocli.version>
 
         <plugins.maven.site.version>3.7.1</plugins.maven.site.version>
         <!-- reporting: default output Directory but make it a property so its configurable -->
@@ -92,7 +96,6 @@
         <plugins.maven.war.version>3.2.2</plugins.maven.war.version>
         <plugins.taglist.version>2.4</plugins.taglist.version>
         <plugins.versions.version>2.5</plugins.versions.version>
-        <plugins.maven.liquibase.version>3.5.3</plugins.maven.liquibase.version>
         <plugins.maven.shade.version>3.1.1</plugins.maven.shade.version>
 
         <plugins.buildnumber.version>1.4</plugins.buildnumber.version>
@@ -462,7 +465,7 @@
                 <plugin>
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-maven-plugin</artifactId>
-                    <version>${plugins.maven.liquibase.version}</version>
+                    <version>${liquibase.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -1416,7 +1419,7 @@
                             <archive>
                                 <manifest>
                                     <addClasspath>true</addClasspath>
-                                    <mainClass>liquibase.integration.commandline.Main</mainClass>
+                                    <mainClass>liquibase.integration.commandline.LiquibaseCommandLine</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
@@ -1446,11 +1449,21 @@
                 <dependency>
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-core</artifactId>
-                    <version>${liquibase.core.version}</version>
+                    <version>${liquibase.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                    <version>${snakeyaml.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>info.picocli</groupId>
+                    <artifactId>picocli</artifactId>
+                    <version>${picocli.version}</version>
                 </dependency>
             </dependencies>
         </profile>
