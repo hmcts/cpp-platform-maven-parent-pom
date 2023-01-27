@@ -5,7 +5,7 @@
     <parent>
         <groupId>uk.gov.justice</groupId>
         <artifactId>maven-super-pom</artifactId>
-        <version>2.0.0</version>
+        <version>11.0.0</version>
     </parent>
 
     <groupId>uk.gov.moj.cpp.common</groupId>
@@ -39,7 +39,7 @@
         <enforcer.java.version.range>[11,)</enforcer.java.version.range>
 
         <!-- Java API versions targeted -->
-        <java.se.version>11</java.se.version>
+        <java.se.version>11</java.se.version>               
         <java.ee.version>8</java.ee.version>
         <javaee-api.version>8.0.1</javaee-api.version>
 

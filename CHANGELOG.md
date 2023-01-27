@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [11.0.5-FRAMEWORK-SNAPSHOT] - 2023-01-27
+### Changed
+- Update framework to 11.0.0
+
 ## [11.0.4-FRAMEWORK-SNAPSHOT] - 2022-05-24
 ### Changed
 - Upgrade Liquibase version to 4.10.0
