@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.0.0-FRAMEWORK-SNAPSHOT] - 2023-02-21
+### Changed
+- Update to Java 17
+
 ## [11.0.5-FRAMEWORK-SNAPSHOT] - 2023-01-27
 ### Changed
 - Update framework to 11.0.0
