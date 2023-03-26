@@ -114,7 +114,7 @@
 
         <plugins.jacoco.version>0.8.8</plugins.jacoco.version>
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
-        <plugins.jaxb2.version>0.14.0</plugins.jaxb2.version>
+        <plugins.jaxb2.version>0.15.2</plugins.jaxb2.version>
         <plugins.jaxws.version>2.5</plugins.jaxws.version>
         <plugins.jgitflow.version>1.0-m5.1</plugins.jgitflow.version>
 

@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.0.1-FRAMEWORK-SNAPSHOT] - 2023-03-27
+### Changed
+- Update plugins.jaxb2.version to 0.15.2
+
 ## [17.0.0-FRAMEWORK-SNAPSHOT] - 2023-02-21
 ### Changed
 - Update to Java 17
