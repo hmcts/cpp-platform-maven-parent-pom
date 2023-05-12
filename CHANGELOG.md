@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.10.0-FRAMEWORK-SNAPSHOT] - 2023-05-12
+### Changed
+- Update to Java 17 release version of maven-super-pom: 17.0.0
+
 ## [17.0.1-FRAMEWORK-SNAPSHOT] - 2023-03-27
 ### Changed
 - Update plugins.jaxb2.version to 0.15.2
