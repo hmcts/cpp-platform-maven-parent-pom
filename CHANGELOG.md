@@ -50,7 +50,16 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 - Added `--illegal-access=permit` to maven surefire plugin
 - Added `--illegal-access=permit` to maven failsafe plugin
 
+## [8.0.1] - 2021-10-11
 ### Changed
+- Downgrade liquibase to 3.5.3 to match the version in the framework
+
+## [8.0.0] - 2021-10-05
+### Changed
+- Update to framework 8.0.0 as the final Java 8 version of the framework
+- Bump version to 8 to match framework 8 version   
+- Update maven-super-pom to 2.0.0
+
 ## [2.5.7] - 2019-06-24
 ### Changed
 - Update plugins.require-latest-versions-enforcer-rule.version to version 1.2.0, to fix enforcer not checking all framework plugins issue

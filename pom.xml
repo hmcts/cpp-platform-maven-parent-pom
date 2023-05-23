@@ -156,7 +156,7 @@
         <ci.hook.fixup-versions.skip>true</ci.hook.fixup-versions.skip>
 
         <!-- Updated by CI hooks -->
-        <cpp.parent-pom.version>2.5.8-SNAPSHOT</cpp.parent-pom.version>
+        <cpp.parent-pom.version>8.0.2-SNAPSHOT</cpp.parent-pom.version>
     </properties>
 
     <!--
