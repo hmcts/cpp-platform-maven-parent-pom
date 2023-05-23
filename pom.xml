@@ -5,12 +5,12 @@
     <parent>
         <groupId>uk.gov.justice</groupId>
         <artifactId>maven-super-pom</artifactId>
-        <version>2.0.0</version>
+        <version>17.0.0</version>
     </parent>
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>8.0.2-SNAPSHOT</version>
+    <version>17.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>CPP Parent POM</name>
@@ -36,15 +36,17 @@
 
         <!-- Enforcer settings - ranges need to be in the format defined at http://maven.apache.org/enforcer/enforcer-rules/versionRanges.html -->
         <enforcer.maven.version.range>[${maven.minimum.version},)</enforcer.maven.version.range>
-        <enforcer.java.version.range>[1.8,)</enforcer.java.version.range>
+        <enforcer.java.version.range>[17,)</enforcer.java.version.range>
 
         <!-- Java API versions targeted -->
-        <java.se.version>8</java.se.version>
-        <java.ee.version>7</java.ee.version>
+        <java.se.version>17</java.se.version>
+        <java.ee.version>8</java.ee.version>
+        <javaee-api.version>8.0.1</javaee-api.version>
 
         <!-- Compilation properties -->
-        <compiler.source>1.8</compiler.source>
-        <compiler.target>1.8</compiler.target>
+        <compiler.source>17</compiler.source>
+        <compiler.target>17</compiler.target>
+        <compiler.release>17</compiler.release>
         <compiler.debug>true</compiler.debug>
         <compiler.debuglevel>lines,vars,source</compiler.debuglevel>
         <compiler.showdeprecation>true</compiler.showdeprecation>
@@ -61,11 +63,11 @@
         <plugins.cobertura.version>2.7</plugins.cobertura.version>
         <plugins.findbugs.version>3.0.3</plugins.findbugs.version>
         <plugins.maven.checkstyle.version>2.17</plugins.maven.checkstyle.version>
-        <plugins.maven.enforcer.version>3.0.0-M1</plugins.maven.enforcer.version>
-        <plugins.require-latest-versions-enforcer-rule.version>1.2.0</plugins.require-latest-versions-enforcer-rule.version>
+        <plugins.maven.enforcer.version>3.0.0-M3</plugins.maven.enforcer.version>
+        <plugins.require-latest-versions-enforcer-rule.version>11.0.0-M1</plugins.require-latest-versions-enforcer-rule.version>
 
         <plugins.maven.clean.version>3.1.0</plugins.maven.clean.version>
-        <plugins.maven.compiler.version>3.7.0</plugins.maven.compiler.version>
+        <plugins.maven.compiler.version>3.10.1</plugins.maven.compiler.version>
         <plugins.maven.dependency.version>3.1.1</plugins.maven.dependency.version>
         <plugins.maven.ear.version>2.10.1</plugins.maven.ear.version>
         <plugins.maven.ejb.version>2.5.1</plugins.maven.ejb.version>
@@ -80,7 +82,17 @@
         <plugins.maven.release.version>2.5.3</plugins.maven.release.version>
         <plugins.maven.remote.resources.version>1.5</plugins.maven.remote.resources.version>
         <plugins.maven.scm.version>1.10.0</plugins.maven.scm.version>
-        <liquibase.core.version>3.5.3</liquibase.core.version>
+
+        <!-- liquibase and dependencies -->
+        <liquibase.version>4.10.0</liquibase.version>
+        <snakeyaml.version>1.33</snakeyaml.version>
+        <picocli.version>4.6.3</picocli.version>
+
+        <!-- JaxB dependencies -->
+        <jaxb-runtime.version>2.3.1</jaxb-runtime.version>
+        <jakarta.xml.bind-api.version>2.3.2</jakarta.xml.bind-api.version>
+        <activation.version>1.1</activation.version>
+
 
         <plugins.maven.site.version>3.7.1</plugins.maven.site.version>
         <!-- reporting: default output Directory but make it a property so its configurable -->
@@ -90,26 +102,25 @@
         <plugins.maven.war.version>3.2.2</plugins.maven.war.version>
         <plugins.taglist.version>2.4</plugins.taglist.version>
         <plugins.versions.version>2.5</plugins.versions.version>
-        <plugins.maven.liquibase.version>3.6.1</plugins.maven.liquibase.version>
         <plugins.maven.shade.version>3.1.1</plugins.maven.shade.version>
 
         <plugins.buildnumber.version>1.4</plugins.buildnumber.version>
         <plugins.buildhelper.version>3.0.0</plugins.buildhelper.version>
-        <plugins.groovy.maven.version>2.0</plugins.groovy.maven.version>
+        <plugins.groovy.maven.version>2.1.1</plugins.groovy.maven.version>
         <plugins.exec.maven.version>1.6.0</plugins.exec.maven.version>
         <plugins.maven.javadoc.version>3.0.1</plugins.maven.javadoc.version>
         <plugins.maven.source.version>3.0.1</plugins.maven.source.version>
 
         <!-- testing -->
-        <plugins.maven.surefire.version>2.22.0</plugins.maven.surefire.version>
+        <plugins.maven.surefire.version>2.22.2</plugins.maven.surefire.version>
         <plugins.maven.failsafe.version>${plugins.maven.surefire.version}</plugins.maven.failsafe.version>
         <plugins.pitest.version>1.4.0</plugins.pitest.version>
 
         <plugins.maven.wildfly.version>1.2.1.Final</plugins.maven.wildfly.version>
 
-        <plugins.jacoco.version>0.8.1</plugins.jacoco.version>
+        <plugins.jacoco.version>0.8.8</plugins.jacoco.version>
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
-        <plugins.jaxb2.version>0.14.0</plugins.jaxb2.version>
+        <plugins.jaxb2.version>0.15.2</plugins.jaxb2.version>
         <plugins.jaxws.version>2.5</plugins.jaxws.version>
         <plugins.jgitflow.version>1.0-m5.1</plugins.jgitflow.version>
 
@@ -189,6 +200,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${plugins.maven.surefire.version}</version>
+                    <configuration>
+                        <argLine>--illegal-access=permit</argLine>
+                    </configuration>
                 </plugin>
 
                 <plugin>
@@ -201,6 +215,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${plugins.maven.failsafe.version}</version>
+                    <configuration>
+                        <argLine>--illegal-access=permit</argLine>
+                    </configuration>
                     <executions>
                         <execution>
                             <id>integration-test</id>
@@ -230,6 +247,7 @@
                     <version>${plugins.maven.compiler.version}</version>
                     <!-- Configuration reference - http://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html -->
                     <configuration>
+                        <release>${compiler.release}</release>
                         <source>${compiler.source}</source>
                         <target>${compiler.target}</target>
                         <debug>${compiler.debug}</debug>
@@ -453,7 +471,7 @@
                 <plugin>
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-maven-plugin</artifactId>
-                    <version>${plugins.maven.liquibase.version}</version>
+                    <version>${liquibase.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -828,6 +846,9 @@
                         </reports>
                     </reportSet>
                 </reportSets>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
             </plugin>
 
             <!-- Generate reports on test coverage - http://www.eclemma.org/jacoco/trunk/doc/maven.html -->
@@ -1306,6 +1327,23 @@
                         <groupId>uk.gov.moj.cpp.raml.utils</groupId>
                         <artifactId>raml-maven-plugin</artifactId>
                         <version>${plugins.raml.utils.version}</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>jakarta.xml.bind</groupId>
+                                <artifactId>jakarta.xml.bind-api</artifactId>
+                                <version>${jakarta.xml.bind-api.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>javax.activation</groupId>
+                                <artifactId>activation</artifactId>
+                                <version>${activation.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.glassfish.jaxb</groupId>
+                                <artifactId>jaxb-runtime</artifactId>
+                                <version>${jaxb-runtime.version}</version>
+                            </dependency>
+                        </dependencies>
                         <configuration>
                             <pathToRaml>src/raml</pathToRaml>
                         </configuration>
@@ -1387,7 +1425,7 @@
                             <archive>
                                 <manifest>
                                     <addClasspath>true</addClasspath>
-                                    <mainClass>liquibase.integration.commandline.Main</mainClass>
+                                    <mainClass>liquibase.integration.commandline.LiquibaseCommandLine</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
@@ -1417,10 +1455,21 @@
                 <dependency>
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-core</artifactId>
+                    <version>${liquibase.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                    <version>${snakeyaml.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>info.picocli</groupId>
+                    <artifactId>picocli</artifactId>
+                    <version>${picocli.version}</version>
                 </dependency>
             </dependencies>
         </profile>
