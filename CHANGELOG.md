@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.10.1] - 2023-07-06
+### Changed
+- Remove command line arguments from surefire plugin in order to fix jacoco coverage generation issue
+
 ## [17.0.0] - 2023-05-23
 ### Changed
 - Update to Java 17
