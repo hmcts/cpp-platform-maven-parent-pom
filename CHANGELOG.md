@@ -5,50 +5,26 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
-## [17.10.0-FRAMEWORK-SNAPSHOT] - 2023-05-12
+## [17.10.1] - 2023-07-06
 ### Changed
-- Update to Java 17 release version of maven-super-pom: 17.0.0
+- Remove command line arguments from surefire plugin in order to fix jacoco coverage generation issue
 
-## [17.0.1-FRAMEWORK-SNAPSHOT] - 2023-03-27
-### Changed
-- Update plugins.jaxb2.version to 0.15.2
-
-## [17.0.0-FRAMEWORK-SNAPSHOT] - 2023-02-21
+## [17.0.0] - 2023-05-23
 ### Changed
 - Update to Java 17
-
-## [11.0.5-FRAMEWORK-SNAPSHOT] - 2023-01-27
-### Changed
-- Update framework to 11.0.0
-
-## [11.0.4-FRAMEWORK-SNAPSHOT] - 2022-05-24
-### Changed
+- Update to Jee 8.0
+- Update maven compiler to 3.8.0
+- Force maven to use Java 17+ compiler
 - Upgrade Liquibase version to 4.10.0
-
-## [11.0.3-FRAMEWORK-SNAPSHOT] - 2022-02-25
-### Changed
-- Liquibase version downgraded to 3.5.3
-
-## [11.0.2-FRAMEWORK-SNAPSHOT] - 2021-06-16
-### Changed
-- Add 'javaee-api.version' property of 8.0.1
-
-## [11.0.0-FRAMEWORK-SNAPSHOT] - 2021-05-20
-### Changed
-- Updated to Jee 8.0
-- Updated maven.enforcer.plugin to 3.0.0-M3
-- Updated require-latest-versions-enforcer-rule.plugin to 11.0.0-M1
-
-## [11.0.0] - 2021-05-01
-### Changed
-- Updated to Java 11
-- Updated maven compiler to 3.8.0
-- Updated maven surefire plugin to 2.22.2
-- Updated maven jacoco plugin to 0.8.4
-
+- Update plugins.jaxb2.version to 0.15.2
+- Update maven.enforcer.plugin to 3.0.0-M3
+- Update require-latest-versions-enforcer-rule.plugin to 17.0.0
+- Update maven surefire plugin to 2.22.2
+- Update maven jacoco plugin to 0.8.4
 ### Added
 - Added `--illegal-access=permit` to maven surefire plugin
 - Added `--illegal-access=permit` to maven failsafe plugin
+- Add 'javaee-api.version' property of 8.0.1
 
 ## [8.0.1] - 2021-10-11
 ### Changed
