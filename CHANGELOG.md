@@ -5,7 +5,7 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
-## [17.10.2] - 2023-08-02
+## [17.10.3] - 2023-08-02
 - Update surefire and failsafe plugin versions to 3.1.2 (junit5)
 
 ## [17.10.1] - 2023-07-06
