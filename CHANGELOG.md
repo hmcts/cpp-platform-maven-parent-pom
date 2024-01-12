@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unrelease]
 
+## [8.0.2] - 2024-01-12
+### Changed
+- Update maven-super-pom to 8.0.0
+
 ## [8.0.1] - 2021-10-11
 ### Changed
 - Downgrade liquibase to 3.5.3 to match the version in the framework
