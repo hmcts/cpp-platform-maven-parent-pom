@@ -117,6 +117,8 @@
         <plugins.pitest.version>1.4.0</plugins.pitest.version>
 
         <plugins.maven.wildfly.version>1.2.1.Final</plugins.maven.wildfly.version>
+        <plugins.maven.jgitflow.version>1.0-m5.1</plugins.maven.jgitflow.version>
+
 
         <plugins.jacoco.version>0.8.8</plugins.jacoco.version>
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
@@ -189,6 +191,25 @@
         <!-- Default plugin versions and management -->
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>${plugins.maven.jgitflow.version}</version>
+                    <configuration>
+                        <flowInitContext>
+                            <masterBranchName>dev/release</masterBranchName>
+                            <developBranchName>main</developBranchName>
+                            <featureBranchPrefix>dev/feature-</featureBranchPrefix>
+                            <releaseBranchPrefix>dev/release-</releaseBranchPrefix>
+                            <hotfixBranchPrefix>dev/hotfix-</hotfixBranchPrefix>
+                            <versionTagPrefix>v</versionTagPrefix>
+                        </flowInitContext>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <enableSshAgent>true</enableSshAgent>
+                        <pushReleases>true</pushReleases>
+                    </configuration>
+                </plugin>
+
                 <!-- WildFly plugin to deploy war -->
                 <plugin>
                     <groupId>org.wildfly.plugins</groupId>
@@ -566,6 +587,11 @@
 
         <!-- Plugin configuration -->
         <plugins>
+            <!-- This is required by validation pipeline and referenced in devops code base, this is not used by developer community -->
+            <plugin>
+                <groupId>external.atlassian.jgitflow</groupId>
+                <artifactId>jgitflow-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
