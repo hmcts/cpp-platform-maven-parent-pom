@@ -4,6 +4,8 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [17.10.4] - 2024-06-17
 - Add jgitflow maven plugin
 
 ## [17.10.3] - 2023-08-02
