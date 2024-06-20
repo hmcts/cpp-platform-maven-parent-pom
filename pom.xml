@@ -510,24 +510,6 @@
                     <version>${plugins.jaxws.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>external.atlassian.jgitflow</groupId>
-                    <artifactId>jgitflow-maven-plugin</artifactId>
-                    <version>${plugins.jgitflow.version}</version>
-                    <configuration>
-                        <flowInitContext>
-                            <masterBranchName>dev/release</masterBranchName>
-                            <developBranchName>master</developBranchName>
-                            <featureBranchPrefix>dev/feature-</featureBranchPrefix>
-                            <releaseBranchPrefix>dev/release-</releaseBranchPrefix>
-                            <hotfixBranchPrefix>dev/hotfix-</hotfixBranchPrefix>
-                            <versionTagPrefix>v</versionTagPrefix>
-                        </flowInitContext>
-                        <autoVersionSubmodules>true</autoVersionSubmodules>
-                        <enableSshAgent>true</enableSshAgent>
-                        <pushReleases>${pushReleases}</pushReleases>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>${plugins.maven.source.version}</version>
@@ -740,10 +722,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>external.atlassian.jgitflow</groupId>
-                <artifactId>jgitflow-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
