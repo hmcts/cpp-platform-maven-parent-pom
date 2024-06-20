@@ -5,6 +5,9 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.10.7] - 2024-06-20
+- Remove duplicate jgitflow maven property
+
 ## [17.10.6] - 2024-06-20
 - Remove duplicate jgitflow maven plugin
 
