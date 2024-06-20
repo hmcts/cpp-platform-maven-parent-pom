@@ -5,6 +5,9 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.10.5] - 2024-06-20
+- Add sonar-maven-plugin to lock version
+
 ## [17.10.4] - 2024-06-17
 - Add jgitflow maven plugin
 

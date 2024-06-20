@@ -118,6 +118,7 @@
 
         <plugins.maven.wildfly.version>1.2.1.Final</plugins.maven.wildfly.version>
         <plugins.maven.jgitflow.version>1.0-m5.1</plugins.maven.jgitflow.version>
+        <plugins.maven.sonar.version>3.11.0.3922</plugins.maven.sonar.version>
 
 
         <plugins.jacoco.version>0.8.8</plugins.jacoco.version>
@@ -191,6 +192,11 @@
         <!-- Default plugin versions and management -->
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${plugins.maven.sonar.version}</version>
+                </plugin>
                 <plugin>
                     <groupId>external.atlassian.jgitflow</groupId>
                     <artifactId>jgitflow-maven-plugin</artifactId>
@@ -587,6 +593,10 @@
 
         <!-- Plugin configuration -->
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+            </plugin>
             <!-- This is required by validation pipeline and referenced in devops code base, this is not used by developer community -->
             <plugin>
                 <groupId>external.atlassian.jgitflow</groupId>
