@@ -5,6 +5,14 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.10.8] - 2024-07-01
+### Added
+- Moved camunda version and its associated plugin dependencies here, so they can be seen by plugin dependency management
+  - cpp.camunda.version: 7.17.0
+  - org.mapstruct.version: 1.5.5.Final
+  - lombok.mapstruct.binding.version: 0.2.0
+  - org.projectlombok.version: 1.18.26
+
 ## [17.10.7] - 2024-06-20
 - Remove duplicate jgitflow maven property
 
