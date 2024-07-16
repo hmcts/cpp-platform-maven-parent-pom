@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.10.9] - 2024-07-16
+### Added
+- Add enforcer rules to verify core domain and service parent pom are on latest release version
+
 ## [17.10.8] - 2024-07-01
 ### Added
 - Moved camunda version and its associated plugin dependencies here, so they can be seen by plugin dependency management
