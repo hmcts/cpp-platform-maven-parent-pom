@@ -123,6 +123,7 @@
 
         <plugins.maven.wildfly.version>1.2.1.Final</plugins.maven.wildfly.version>
         <plugins.maven.jgitflow.version>1.0-m5.1</plugins.maven.jgitflow.version>
+        <jgitflow.maven.developBranchName>master</jgitflow.maven.developBranchName>
         <plugins.maven.sonar.version>3.11.0.3922</plugins.maven.sonar.version>
 
 
@@ -210,7 +211,7 @@
                     <configuration>
                         <flowInitContext>
                             <masterBranchName>dev/release</masterBranchName>
-                            <developBranchName>main</developBranchName>
+                            <developBranchName>${jgitflow.maven.developBranchName}</developBranchName>
                             <featureBranchPrefix>dev/feature-</featureBranchPrefix>
                             <releaseBranchPrefix>dev/release-</releaseBranchPrefix>
                             <hotfixBranchPrefix>dev/hotfix-</hotfixBranchPrefix>
