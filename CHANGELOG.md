@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.10.11] - 2024-10-21
+### Changed
+- service parent pom enforcer rule now checks for latest major and minor versions and ignores patch version
+
 ## [17.10.10] - 2024-08-02
 ### Added
 - Provide capability to configure jgitflow develop branch name through 'jgitflow.maven.developBranchName' property
