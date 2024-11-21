@@ -28,13 +28,7 @@ variables:
   sonarqubeProject: "uk.gov.moj.cpp.common:parent-pom"
 
 stages:
-  - ${{ if and(eq(variables['Build.Repository.Name'], 'hmcts/cpp-platform-maven-service-parent-pom'), eq(variables['Build.Reason'], 'PullRequest')) }}:
-      - template: pipelines/context-verify.yaml@cppAzureDevOpsTemplates
-        parameters:
-          sonarqube_project: ${{ variables['sonarqubeProject'] }}
-          sonarQubeType: 'sonarQubeAKS'
-
-  - ${{ if and(ne(variables['Build.Repository.Name'], 'hmcts/cpp-platform-maven-service-parent-pom'), eq(variables['Build.Reason'], 'PullRequest')) }}:
+  - ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
       - template: pipelines/platform-verify.yaml@cppAzureDevOpsTemplates
 
   - ${{ if eq(variables['Build.Reason'], 'Manual') }}:
