@@ -25,7 +25,7 @@ pool:
     - identifier -equals centos8-j17
 
 variables:
-  sonarqubeProject: "uk.gov.moj.cpp.common:common-bom"
+  sonarqubeProject: "uk.gov.moj.cpp.common:parent-pom"
 
 stages:
   - ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
@@ -34,6 +34,6 @@ stages:
   - ${{ if eq(variables['Build.Reason'], 'Manual') }}:
       - template: pipelines/library-validation.yaml@cppAzureDevOpsTemplates
         parameters:
-          serviceName: 'commonbom'
+          serviceName: 'parentpom'
           RUN_RELEASE: ${{ parameters.RUN_RELEASE }}
           JOB_TYPE: 'library'
