@@ -1,1 +1,0 @@
-# cpp-platform-maven-parent-pom
