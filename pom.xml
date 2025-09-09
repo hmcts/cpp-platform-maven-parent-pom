@@ -143,12 +143,10 @@
         <enforcer.skipLatestCoreDomainRule>false</enforcer.skipLatestCoreDomainRule>
         <enforcer.skipLatestServiceParentPomRule>false</enforcer.skipLatestServiceParentPomRule>
 
-        <github.scm.url>git@github.com:hmcts</github.scm.url>
         <cpp.scm.project>cpp-platform-maven-parent-pom</cpp.scm.project>
-        <cpp.scm.connection>${github.scm.url}/${cpp.scm.project}.git</cpp.scm.connection>
-        <cpp.scm.developerConnection>${cpp.scm.connection}</cpp.scm.developerConnection>
-        <github.web.url>https://github.com/hmcts</github.web.url>
-        <cpp.scm.url>${github.web.url}/${cpp.scm.project}</cpp.scm.url>
+        <cpp.scm.connection>scm:git:https://github.com/hmcts/${cpp.scm.project}.git</cpp.scm.connection>
+        <cpp.scm.developerConnection>scm:git:git@github.com:hmcts/${cpp.scm.project}.git</cpp.scm.developerConnection>
+        <cpp.scm.url>https://github.com/hmcts/${cpp.scm.project}</cpp.scm.url>
         <!-- https://maven.apache.org/skins/maven-fluido-skin/ Project Profile -->
         <cpp.site.project.profile>production</cpp.site.project.profile>
 
