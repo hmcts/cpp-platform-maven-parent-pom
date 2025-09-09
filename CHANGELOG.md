@@ -4,8 +4,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [17.10.13] - 2025-09-09
 ### Changed
 - Remove distribution management from pom.xml and prepare for public repo migration
+- Enable secrets scanning through github PR workflow action
 
 ## [17.10.11] - 2024-10-21
 ### Changed
