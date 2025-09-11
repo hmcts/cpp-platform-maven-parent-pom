@@ -10,7 +10,7 @@
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>16.0.3-FRAMEWORK-M1-SNAPSHOT</version>
+    <version>16.0.3-FRAMEWORK-M2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>CPP Parent POM</name>
