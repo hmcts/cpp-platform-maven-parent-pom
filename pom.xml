@@ -85,7 +85,7 @@
 
         <!-- liquibase and dependencies -->
         <liquibase.version>4.10.0</liquibase.version>
-        <snakeyaml.version>1.33</snakeyaml.version>
+        <snakeyaml.version>2.0</snakeyaml.version>
         <picocli.version>4.6.3</picocli.version>
 
         <!-- JaxB dependencies -->
