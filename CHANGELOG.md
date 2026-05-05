@@ -5,6 +5,18 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [21.0.0-SNAPSHOT] - 2026-04-14
+### Changed
+- Bumped version to `21.0.0-SNAPSHOT` for Java 21 / WildFly 34 migration
+- Updated parent `cp-maven-parent-pom` to `21.0.0-SNAPSHOT`
+- Java compiler source/target/release: `17` → `21`
+- `enforcer.java.version.range`: `[17,)` → `[21,)`
+- `java.se.version`: `17` → `21`
+- `java.ee.version`: `8` → `10`
+- `javaee-api.version`: `8.0.1` → `10.0.0` (Jakarta EE 10)
+- `plugins.jacoco.version`: `0.8.8` → `0.8.12`
+- `jakarta.xml.bind-api.version`: `2.3.2` → `4.0.0`
+
 ## [17.10.13] - 2025-09-09
 ### Changed
 - Remove distribution management from pom.xml and prepare for public repo migration
