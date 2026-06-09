@@ -5,12 +5,12 @@
     <parent>
         <groupId>uk.gov.justice</groupId>
         <artifactId>maven-super-pom</artifactId>
-        <version>17.0.0</version>
+        <version>25.104.0-M1</version>
     </parent>
 
     <groupId>uk.gov.moj.cpp.common</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>17.10.15-SNAPSHOT</version>
+    <version>25.104.0-M1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>CPP Parent POM</name>
@@ -36,17 +36,17 @@
 
         <!-- Enforcer settings - ranges need to be in the format defined at http://maven.apache.org/enforcer/enforcer-rules/versionRanges.html -->
         <enforcer.maven.version.range>[${maven.minimum.version},)</enforcer.maven.version.range>
-        <enforcer.java.version.range>[17,)</enforcer.java.version.range>
+        <enforcer.java.version.range>[25,)</enforcer.java.version.range>
 
         <!-- Java API versions targeted -->
-        <java.se.version>17</java.se.version>
-        <java.ee.version>8</java.ee.version>
-        <javaee-api.version>8.0.1</javaee-api.version>
+        <java.se.version>25</java.se.version>
+        <java.ee.version>11</java.ee.version>
+        <javaee-api.version>11.0.0</javaee-api.version>
 
         <!-- Compilation properties -->
-        <compiler.source>17</compiler.source>
-        <compiler.target>17</compiler.target>
-        <compiler.release>17</compiler.release>
+        <compiler.source>25</compiler.source>
+        <compiler.target>25</compiler.target>
+        <compiler.release>25</compiler.release>
         <compiler.debug>true</compiler.debug>
         <compiler.debuglevel>lines,vars,source</compiler.debuglevel>
         <compiler.showdeprecation>true</compiler.showdeprecation>
@@ -89,9 +89,13 @@
         <picocli.version>4.6.3</picocli.version>
 
         <!-- JaxB dependencies -->
+        <jaxb-api.version>2.3.1</jaxb-api.version>
         <jaxb-runtime.version>2.3.1</jaxb-runtime.version>
-        <jakarta.xml.bind-api.version>2.3.2</jakarta.xml.bind-api.version>
+        <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
         <activation.version>1.1</activation.version>
+
+        <!-- Azure legacy SDK -->
+        <azure-storage-version>8.4.0</azure-storage-version>
 
         <!-- Camunda and associated dependencies -->
         <cpp.camunda.version>7.17.0</cpp.camunda.version>
@@ -127,7 +131,7 @@
         <plugins.maven.sonar.version>3.11.0.3922</plugins.maven.sonar.version>
 
 
-        <plugins.jacoco.version>0.8.8</plugins.jacoco.version>
+        <plugins.jacoco.version>0.8.12</plugins.jacoco.version>
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
         <plugins.jaxb2.version>0.15.2</plugins.jaxb2.version>
         <plugins.jaxws.version>2.5</plugins.jaxws.version>
@@ -165,7 +169,7 @@
         <ci.hook.fixup-versions.skip>true</ci.hook.fixup-versions.skip>
 
         <!-- Updated by CI hooks -->
-        <cpp.parent-pom.version>17.10.15-SNAPSHOT</cpp.parent-pom.version>
+        <cpp.parent-pom.version>25.104.0-M1-SNAPSHOT</cpp.parent-pom.version>
     </properties>
 
     <!--
