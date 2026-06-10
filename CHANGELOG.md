@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [25.104.0-M2] - 2026-06-10
+### Changed
+- Bumped `plugins.jacoco.version` from `0.8.12` to `0.8.14` — JaCoCo 0.8.12 cannot instrument Java 25 class files (major version 69); 0.8.14 adds ASM 9.7 support for Java 25
+
 ## [25.104.0-M1] - 2026-06-09
 ### Changed
 - Updated parent `maven-super-pom` to `25.104.0-M1`

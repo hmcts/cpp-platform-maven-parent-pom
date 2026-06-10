@@ -131,7 +131,7 @@
         <plugins.maven.sonar.version>3.11.0.3922</plugins.maven.sonar.version>
 
 
-        <plugins.jacoco.version>0.8.12</plugins.jacoco.version>
+        <plugins.jacoco.version>0.8.14</plugins.jacoco.version>
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
         <plugins.jaxb2.version>0.15.2</plugins.jaxb2.version>
         <plugins.jaxws.version>2.5</plugins.jaxws.version>
