@@ -4,6 +4,12 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- Bumped `plugins.jacoco.version` `0.8.12` → `0.8.14` for Java 25 class-file support (JaCoCo 0.8.12 cannot read class files produced by JDK 25).
+- Bumped `plugins.maven.shade.version` `3.1.1` → `3.6.0`. shade 3.1.1 calls `project.setFile()` after writing `dependency-reduced-pom.xml`, causing Maven 3.9 to re-run the lifecycle with `basedir=target/`; the second `clean` deletes the file before the second `jar` execution reads it (`dependency-reduced-pom.xml isn't a file`) — hitting every context using the Liquibase fat-jar profile. 3.6.0 no longer calls `project.setFile()` in the package phase, so the context-level `createDependencyReducedPom=false` workarounds can be removed once this is published.
+
+### Fixed
+- Removed the dead `<useLatestCommittedRevision>` entry from the `buildnumber-maven-plugin` config (unknown parameter — the real name is `useLastCommittedRevision`, and the value was the default `false`), eliminating the `[WARNING] Parameter 'useLatestCommittedRevision' is unknown for plugin 'buildnumber-maven-plugin'` build warning.
 
 ## [25.104.0-M1] - 2026-06-09
 ### Changed
