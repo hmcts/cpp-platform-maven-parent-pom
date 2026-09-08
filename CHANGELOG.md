@@ -4,21 +4,23 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-### Changed
-- Bumped `plugins.jacoco.version` `0.8.12` → `0.8.14` for Java 25 class-file support (JaCoCo 0.8.12 cannot read class files produced by JDK 25).
-- Bumped `plugins.maven.shade.version` `3.1.1` → `3.6.0`. shade 3.1.1 calls `project.setFile()` after writing `dependency-reduced-pom.xml`, causing Maven 3.9 to re-run the lifecycle with `basedir=target/`; the second `clean` deletes the file before the second `jar` execution reads it (`dependency-reduced-pom.xml isn't a file`) — hitting every context using the Liquibase fat-jar profile. 3.6.0 no longer calls `project.setFile()` in the package phase, so the context-level `createDependencyReducedPom=false` workarounds can be removed once this is published.
 
-### Fixed
-- Removed the dead `<useLatestCommittedRevision>` entry from the `buildnumber-maven-plugin` config (unknown parameter — the real name is `useLastCommittedRevision`, and the value was the default `false`), eliminating the `[WARNING] Parameter 'useLatestCommittedRevision' is unknown for plugin 'buildnumber-maven-plugin'` build warning.
+## [25.104.0] - 2026-09-08
+First official (non-milestone) release of the Java 25 / WildFly 40 / Jakarta EE 11 line,
+consolidating milestones `25.104.0-M1` and `25.104.0-M2`.
 
-## [25.104.0-M1] - 2026-06-09
 ### Changed
-- Updated parent `maven-super-pom` to `25.104.0-M1`
+- Updated parent `maven-super-pom` to the released `25.104.0`
 - Java compiler source/target/release: `21` → `25`
 - `enforcer.java.version.range`: `[21,)` → `[25,)`
 - `java.se.version`: `21` → `25`
 - `java.ee.version`: `10` → `11`
 - `javaee-api.version`: `10.0.0` → `11.0.0` (Jakarta EE 11)
+- Bumped `plugins.jacoco.version` `0.8.12` → `0.8.14` for Java 25 class-file support (JaCoCo 0.8.12 cannot read class files produced by JDK 25).
+- Bumped `plugins.maven.shade.version` `3.1.1` → `3.6.0`. shade 3.1.1 calls `project.setFile()` after writing `dependency-reduced-pom.xml`, causing Maven 3.9 to re-run the lifecycle with `basedir=target/`; the second `clean` deletes the file before the second `jar` execution reads it (`dependency-reduced-pom.xml isn't a file`) — hitting every context using the Liquibase fat-jar profile. 3.6.0 no longer calls `project.setFile()` in the package phase, so the context-level `createDependencyReducedPom=false` workarounds can be removed now that this is published.
+
+### Fixed
+- Removed the dead `<useLatestCommittedRevision>` entry from the `buildnumber-maven-plugin` config (unknown parameter — the real name is `useLastCommittedRevision`, and the value was the default `false`), eliminating the `[WARNING] Parameter 'useLatestCommittedRevision' is unknown for plugin 'buildnumber-maven-plugin'` build warning.
 
 ## [21.0.0-SNAPSHOT] - 2026-04-14
 ### Changed
