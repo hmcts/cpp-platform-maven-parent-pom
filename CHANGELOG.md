@@ -7,7 +7,7 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [25.104.0] - 2026-09-08
 First official (non-milestone) release of the Java 25 / WildFly 40 / Jakarta EE 11 line,
-consolidating milestones `25.104.0-M1` and `25.104.0-M2`.
+consolidating milestones `25.104.0-M1` to `25.104.0-M3`.
 
 ### Changed
 - Updated parent `maven-super-pom` to the released `25.104.0`
