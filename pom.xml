@@ -76,6 +76,8 @@
 
         <!-- liquibase and dependencies -->
         <snakeyaml.version>1.33</snakeyaml.version>
+        <!-- Version of the framework library that restores Liquibase 4's afterColumn handling. -->
+        <liquibase.postgres.compatibility.version>25.104.2</liquibase.postgres.compatibility.version>
         <picocli.version>4.6.3</picocli.version>
 
         <!-- JaxB dependencies -->
@@ -1457,6 +1459,15 @@
                             <dependencyReducedPomLocation>
                                 ${project.build.directory}/dependency-reduced-pom.xml
                             </dependencyReducedPomLocation>
+                            <transformers>
+                                <!-- Liquibase discovers changes, sql generators, parsers and the rest
+                                     through META-INF/services. Several jars being shaded here provide
+                                     the same service files, so they must be concatenated rather than
+                                     overwritten - without this the last jar in wins and the others'
+                                     registrations disappear silently. -->
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
                         </configuration>
                         <executions>
                             <execution>
@@ -1476,6 +1487,15 @@
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-core</artifactId>
                     <version>${liquibase.version}</version>
+                </dependency>
+                <!-- Restores the Liquibase 4 behaviour of discarding the MySQL-only afterColumn
+                     hint on databases with no column ordering. Liquibase 5 sets it unconditionally,
+                     which aborts the migration on postgresql. Existing changesets cannot be edited,
+                     so the behaviour is restored here instead. -->
+                <dependency>
+                    <groupId>uk.gov.justice.framework.libraries</groupId>
+                    <artifactId>liquibase-postgres-compatibility</artifactId>
+                    <version>${liquibase.postgres.compatibility.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.postgresql</groupId>

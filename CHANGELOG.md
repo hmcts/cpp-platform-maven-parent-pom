@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file, which follo
 on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
+## [25.104.3] - 2026-09-14
+### Added
+- `liquibase-postgres-compatibility` 25.104.2 is now shaded into every context's Liquibase jar by the `liquibase-jar` profile. It restores Liquibase 4's handling of the MySQL-only `afterColumn` hint, which Liquibase 5.0.3 sets unconditionally — aborting every migration on PostgreSQL with *"addAfterColumn is not allowed on postgresql"*. Existing changesets are untouched, so DATABASECHANGELOG checksums are unchanged.
+
+### Changed
+- Added the Shade `ServicesResourceTransformer` to the `liquibase-jar` profile. Several shaded jars provide the same `META-INF/services` files; without the transformer the last jar in wins and the others' registrations are lost silently. This is what allows the compatibility change to be discovered at all, and it makes the existing Liquibase service registrations robust too.
+
 ## [25.104.1] - 2026-09-10
 ### Changed
 - Updated the parent `maven-super-pom` to 25.104.1 to take the shared version properties from it
