@@ -114,6 +114,8 @@
         <plugins.raml.utils.version>1.2.5</plugins.raml.utils.version>
         <plugins.jaxb2.version>0.15.2</plugins.jaxb2.version>
         <plugins.jaxws.version>2.5</plugins.jaxws.version>
+        <!-- com.sun.xml.ws plugin: generates Jakarta XML Web Services 4 code; the codehaus 2.5 one generates javax -->
+        <plugins.jakarta.jaxws.version>4.0.5</plugins.jakarta.jaxws.version>
 
         <!-- security -->
         <plugins.dependency-check-maven.version>4.0.2</plugins.dependency-check-maven.version>
@@ -487,6 +489,11 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>jaxws-maven-plugin</artifactId>
                     <version>${plugins.jaxws.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.sun.xml.ws</groupId>
+                    <artifactId>jaxws-maven-plugin</artifactId>
+                    <version>${plugins.jakarta.jaxws.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
