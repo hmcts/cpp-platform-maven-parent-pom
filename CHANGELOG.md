@@ -4,6 +4,8 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [25.104.6] - 2026-11-26
 ### Added
 - Plugin management for `com.sun.xml.ws:jaxws-maven-plugin` 4.0.5, which generates Jakarta XML Web Services 4 code for
   WildFly 40. The `org.codehaus.mojo:jaxws-maven-plugin` 2.5 entry generates javax code and is kept for now so nothing
