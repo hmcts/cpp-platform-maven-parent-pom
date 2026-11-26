@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file, which follo
 on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added
+- Plugin management for `com.sun.xml.ws:jaxws-maven-plugin` 4.0.5, which generates Jakarta XML Web Services 4 code for
+  WildFly 40. The `org.codehaus.mojo:jaxws-maven-plugin` 2.5 entry generates javax code and is kept for now so nothing
+  that still uses it loses its managed version ([PEG-3749](https://hmcts.atlassian.net/browse/PEG-3749))
+
 ## [25.104.5] - 2026-10-02
 ### Removed
 - The `cpp.parent-pom.version` property, and this project's own `.ci-hooks/fixup-versions` script. The hook did one thing: copy this pom's `<version>` into that property. Nothing read it — it is referenced by no pom in the estate — and the hook was not firing anyway, so the value had drifted to `25.104.0-M1-SNAPSHOT` while the project moved on to `25.104.5`. A plausible-looking but stale version in the properties block is worse than no property; `${project.version}` already gives a pom its own version and cannot go stale.
